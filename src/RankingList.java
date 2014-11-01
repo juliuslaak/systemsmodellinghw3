@@ -3,7 +3,6 @@ public class RankingList {
    
 	
 	
-	
    @Override
    public String toString() {
 	// TODO Auto-generated method stub
