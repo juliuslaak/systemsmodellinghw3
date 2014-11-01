@@ -8,7 +8,7 @@ public class Restaurant
 	
 	public int reputation;
 	
-	public float budget;
+	public float budget = 10000;
 	
 	public String address;
 	
