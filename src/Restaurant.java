@@ -4,7 +4,8 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	int reputation = 15;
+	public int reputation = 15;
+
 	public double budget = 10000.0;
 	public String name;
 	public String address;
@@ -15,7 +16,8 @@ public class Restaurant{
 	private java.util.List<Waiter> waiters;
 	
 	private java.util.List<MenuItem> menu;
-	private java.util.List<Table> tables;
+	
+	java.util.List<Table> tables;
 	
 	
 	public Restaurant( ) throws IOException {
@@ -28,6 +30,8 @@ public class Restaurant{
 		System.out.print("Enter city:");
 		city = GameController.in.readLine();
 		
+		System.out.println("\n");
+		
 		//tax code chosen arbitrarily because I have no idea what it is
 		chef = new Chef("Micheal", "Scott", 123);
 		barman = new Barman("Dwight", "Schrute");
@@ -36,8 +40,14 @@ public class Restaurant{
 		waiters.add(new Waiter("Pam", "Beesly"));
 		waiters.add(new Waiter("Jim", "Halpert"));
 		waiters.add(new Waiter("Kelly", "Kapoor"));
-		
+
+		tables = new ArrayList<Table>();
+		for (int i = 1; i<10; i++) {
+			tables.add(new Table(i));
+		}
+
 		initMenu();
+		
 	}
 	
 	public void payMonthlyCosts( ){
@@ -54,6 +64,7 @@ public class Restaurant{
 		menu.add(new Dish("Hamburger", 500));
 		menu.add(new Dish("Roasted beef", 800));
 	
+
 		//Beverages
 		menu.add(new Beverage("Water", 500));
 		menu.add(new Beverage("Coffee", 300));
@@ -64,7 +75,7 @@ public class Restaurant{
 	
 	public void initMenuItemsCorrespondingPrices( )
 	{
-		
+			
 	}
 	
 	public void rateService( )

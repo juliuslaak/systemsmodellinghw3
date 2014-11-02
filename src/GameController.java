@@ -5,6 +5,11 @@ import java.util.List;
 import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.TimerTask;
 import java.util.Scanner;
 import java.util.TimerTask;
 import java.io.InputStreamReader;
@@ -20,6 +25,8 @@ public class GameController {
 	private static Player player;
 	
 	private static java.util.List<Person> persons;
+	
+	private static java.util.List<Client> clients;
 	
 	private static int currentDay;
 	
@@ -54,7 +61,7 @@ public class GameController {
 					break;
 				case 3:
 					running = false;
-					System.out.println("Exiting game!");
+					System.out.println("Bye bye!");
 					break;
 				default:
 					correctInput = false;
@@ -109,29 +116,22 @@ public class GameController {
 			
 		
 			switch (operationNr) {
-				//train workers
 				case 1:
 					showTrainingOptionsAndTrain();
 					break;
-				//Assign tables
-				case 2:
-					//Here should be some code that lets player
-					//assign tables to waiters
-					//TODO
-					break;
-				//Design menu
 				case 3:
 					designMenu();
 					break;
 				case 4:
 					startDay();
 					break;
-				
 				case 5:
-					System.out.println("Are you sure you wish to quit game?(y/n)");
+					System.out.println("By quitting before the end of the game you lose your points.");
+					System.out.print("Are you sure you wish to quit game now (y/n)? ");
 					String answer = in.readLine();
 					if(answer.equals("y")){
 						quitGame = true;
+						System.out.println("Game over!");
 					}else if(answer.equals("n")){
 						quitGame = false;
 					}else{
@@ -231,15 +231,120 @@ public class GameController {
 
 	private static void startDay() {
 		
+		for (Waiter w : player.getRestaurant().getWaiters()) {
+			w.nrOfTablesAssigned = 0;
+		}
+		
 		assignWaitersToTables();
+		
+		List<Client> clients = new ArrayList<Client>();
+		
+		chooseClients(clients);
+		
+		System.out.println("Day is over!");
+		
+		initializeWaiter();
+		initializeTables();
+		clients = null;
+		currentDay++;
+		
+	}
+
+	private static void initializeTables() {
+		
+		for (Table t : player.getRestaurant().tables) {
+			t.waiter = null;
+		}
+		
+	}
+
+	private static void initializeWaiter() {
+		
+		List<Waiter> waiters = player.getRestaurant().getWaiters();
+		
+		for (Waiter w : waiters) {
+			w.nrOfTablesAssigned = 0;
+		}
 		
 	}
 
 	private static void assignWaitersToTables() {
+		/**
+		 * Randomly assigns tables for waiters who have less than 3 tables assigned
+		 */
 		
-		/*for (Table t : player.getRestaurant().tables) {
-			System.out.println(t.toString());
-		}*/
+		List<Waiter> waiters = player.getRestaurant().getWaiters();
+		Collections.shuffle(waiters);
+		
+
+		for (Table t : player.getRestaurant().tables) {
+			for (Waiter w : waiters) {
+				if (w.nrOfTablesAssigned <= 3) {
+					t.waiter = w;
+					w.nrOfTablesAssigned++;
+					break;
+				}
+			}
+		}
+	}
+
+	private static void chooseClients(List<Client> clients) {
+		
+		int reputation = player.getRestaurant().reputation;
+		
+		List<Person> personsToChooseFrom = new ArrayList<Person>(persons.size());
+		personsToChooseFrom.addAll(persons);
+		
+		List<Table> tablesToChooseFrom = new ArrayList<Table>(player.getRestaurant().tables.size());
+		tablesToChooseFrom.addAll(player.getRestaurant().tables);
+				
+		if (reputation < 15) {
+			System.out.println("2 tables filled with clients. Rise reputation!");
+			for (int i = 1; i<=2; i++) {
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
+			}
+		}
+		else if (reputation > 29) {
+			System.out.println("All tables filled with clients. WOW!");
+			for (int i = 1; i<=9; i++) {
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
+			}
+		}
+		else {
+			for (int i = 1; i<=5; i++) {
+				System.out.println("5 tables filled with clients. Good!");
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
+			}
+		}
+		
+	}
+
+	private static void generateClient(List<Client> clients, 
+			List<Person> personsToChooseFrom, List<Table> tablesToChooseFrom) {
+		
+		// Pick random table from empty tables
+		Random randomGenerator = new Random();
+		int indexOfTable = randomGenerator.nextInt(tablesToChooseFrom.size());
+        Table t = tablesToChooseFrom.get(indexOfTable);
+		
+        // Assign two clients to that table
+        for (int i = 1; i<=2; i++) {
+			for (Person p : personsToChooseFrom) {
+				if (p.getcurrentlyClient() == false) {
+					
+					clients.add(new Client(p,t));
+					p.setcurrentlyClient(true);
+					
+					personsToChooseFrom.remove(p);
+					
+					break;
+				}
+			}
+		}
+        
+        // That table is full now
+		tablesToChooseFrom.remove(t);
+		
 	}
 
 	/**
@@ -356,7 +461,6 @@ public class GameController {
 		System.out.println(" ");
 		System.out.println("Actions");
 		System.out.println("1. Train workers");
-		System.out.println("2. Assign tables");
 		System.out.println("3. Design menu");
 		System.out.println("4. Start day / Open restaurant");
 		System.out.println("5. Quit game\n");

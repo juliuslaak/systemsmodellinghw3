@@ -1,3 +1,6 @@
+import java.util.Collections;
+import java.util.List;
+
 public class Client
 {
 	private Person person;
@@ -5,6 +8,11 @@ public class Client
 	private Order order;
 	
 	private Table table;
+	
+	public Client(Person p, Table t) {
+		this.person = p;
+		this.table = t;
+	}
 
 
 	public void updatePerson( )

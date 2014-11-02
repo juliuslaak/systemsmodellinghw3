@@ -10,22 +10,19 @@ public class Person
 	
 	public String taxCode;
 	
-	
 	private Integer calCount;
-	
 	
 	private Integer volCount;
 	
-	
 	private Integer nrOfDishes;
-	
 	
 	private Integer nrOfBev;
 	
-	
+
 	private boolean currentlyClient;
 	
-	public Person( String name, String surname, String phoneNr, String taxCode ) {
+	public Person (String name, String surname, String telephoneNumber, String taxCode) {
+
 		this.name = name;
 		this.surname = surname;
 		this.telephoneNumber = telephoneNumber;
@@ -34,6 +31,7 @@ public class Person
 		this.volCount = 0;
 		this.nrOfDishes = 0;
 		this.nrOfBev = 0;
+		this.currentlyClient = false;
 	}
 	
 	public Collection pickRandomClientsForRestaurant( )
@@ -62,6 +60,14 @@ public class Person
 	public Integer getNrOfBev( )
 	{
 		return nrOfBev;
+	}
+	
+	public boolean getcurrentlyClient() {
+		return currentlyClient;
+	}
+	
+	public void setcurrentlyClient(boolean IsClient) {
+		this.currentlyClient = IsClient;
 	}
 	
 	
