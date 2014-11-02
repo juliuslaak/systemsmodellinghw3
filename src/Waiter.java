@@ -25,19 +25,11 @@ public class Waiter extends Employee
 		return COURSE_COST;
 	}
 
-	public void receiveOrder( )
-	{
-		
-	}
 	
-	
-	public void SendWaiterToTable( )
-	{
-		
-	}
-	
-	
-	public void associateWithTable( Table table )
+
+
+@Override
+	public void raiseEmployeeExperience( )
 	{
 		
 	}

@@ -24,15 +24,12 @@ public class Chef extends Employee
 		return COURSE_COST;
 	}
 
-	public Dish prepareADish( )
-	{
-		return null;
-	}
 	
-	
-	public Order forwardDishOrder( )
+
+@Override
+	public void raiseEmployeeExperience( )
 	{
-		return null;
+		
 	}
 	
 	

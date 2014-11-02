@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.util.Timer;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.io.File;
@@ -12,18 +11,13 @@ import java.io.IOException;
 
 
 
-public class GameController extends TimerTask {
+public class GameController {
 	
 	static BufferedReader in;
 	
 	private static Player player;
 	
-	private static int currentDay;	
-	
-	private static RankingList rankingList;
-	
-	
-	private static final long DAY_LENGTH = 1000;
+	private static int currentDay;
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -203,13 +197,6 @@ public class GameController extends TimerTask {
 		for(int i = 0; i < 2; i++){
 			System.out.println();
 		}
-	}
-	
-	
-
-	private static void showRankings( RankingList rankingList )
-	{
-		
 	}
 	
 	
