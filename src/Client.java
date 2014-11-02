@@ -6,27 +6,37 @@ public class Client
 	
 	private Table table;
 	
-	private boolean isSatisfiedWithService( )
-	{
-		return false;
-	}
 	
-	private boolean isSatisfiedWithBeverage( )
-	{
-		return false;
-	}
-	
-	private boolean isSatisfiedWithDish( )
-	{
-		return false;
-	}
-	
-	public void serveClient( )
+
+
+
+
+
+	public void updatePerson( )
 	{
 		
 	}
 	
-	public void deliverMenuItems( )
+	
+	public void calSatisfactionService( )
+	{
+		
+	}
+	
+	
+	public void calSatisfactionDish( )
+	{
+		
+	}
+	
+	
+	public void calSatisfactionBev( )
+	{
+		
+	}
+	
+	
+	public void updateReputation( )
 	{
 		
 	}

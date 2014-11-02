@@ -66,12 +66,8 @@ public class Restaurant{
 		
 	}
 	
-	public int calculateReputation( )
-	{
-		return 0;
-	}
 	
-	public float receivePaymentForOrder( )
+public float receivePaymentForOrder( )
 	{
 		return 0;
 	}

@@ -10,9 +10,70 @@ public class Person
 	
 	public String taxCode;
 	
+	
+	private Integer calCount;
+	
+	
+	private Integer volCount;
+	
+	
+	private Integer nrOfDishes;
+	
+	
+	private Integer nrOfBev;
+	
 	public Collection pickRandomClientsForRestaurant( )
 	{
 		return null;
+	}
+	
+	
+
+	public void setCalCount( Integer calCount )
+	{
+		this.calCount=calCount;
+	}
+	
+	
+	public Integer getCalCount( )
+	{
+		return calCount;
+	}
+	
+	
+	public void setNrOfBev( Integer nrOfBev )
+	{
+		this.nrOfBev=nrOfBev;
+	}
+	
+	
+	public Integer getNrOfBev( )
+	{
+		return nrOfBev;
+	}
+	
+	
+	public void setNrOfDishes( Integer nrOfDishes )
+	{
+		this.nrOfDishes=nrOfDishes;
+	}
+	
+	
+	public Integer getNrOfDishes( )
+	{
+		return nrOfDishes;
+	}
+	
+	
+	public void setVolCount( Integer volCount )
+	{
+		this.volCount=volCount;
+	}
+	
+	
+	public Integer getVolCount( )
+	{
+		return volCount;
 	}
 	
 	

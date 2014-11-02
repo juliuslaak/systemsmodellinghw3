@@ -1,8 +1,7 @@
 public class Waiter extends Employee
 {
-	private java.util.List<Table> table;
 	
-	public float computePay( )
+public float computePay( )
 	{
 		return 0;
 	}
