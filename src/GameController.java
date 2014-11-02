@@ -239,7 +239,7 @@ public class GameController {
 	
 		Integer rest = player.getRestaurant().reputation;
 		
-		System.out.println("--------------------------------------------");
+		System.out.println("------ Beginning of a Day ---------");
 		System.out.println("Day: " + Integer.toString(currentDay) + "\tBudget: " + player.getRestaurant().getBudget()
 				+ "\tReputation: " + rest.toString());
 		System.out.println(" ");
@@ -247,7 +247,7 @@ public class GameController {
 		System.out.println("1. Train workers");
 		System.out.println("2. Assign tables");
 		System.out.println("3. Design menu");
-		System.out.println("4. Open restaurant");
+		System.out.println("4. Start day / Open restaurant");
 		System.out.println("5. Quit game\n");
 	    
 		System.out.print("Enter action number: ");
