@@ -6,6 +6,7 @@ public class Client
 	
 	private Table table;
 
+
 	public void updatePerson( )
 	{
 		

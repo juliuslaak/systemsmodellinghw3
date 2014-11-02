@@ -38,8 +38,6 @@ public class Person
 		return null;
 	}
 	
-	
-
 	public void setCalCount( Integer calCount )
 	{
 		this.calCount=calCount;

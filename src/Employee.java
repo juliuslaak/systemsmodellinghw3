@@ -2,7 +2,7 @@ public abstract class Employee
 {
 	private String name;
 	private String surname;
-	LevelOfExperience experience;
+	protected LevelOfExperience experience;
 	
 
 	public Employee( String name, String surname ) {

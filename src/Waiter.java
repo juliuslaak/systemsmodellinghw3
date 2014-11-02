@@ -5,6 +5,9 @@ public class Waiter extends Employee
 	
 	private java.util.List<Table> table;
 	
+	
+	private int nrOfTablesAssigned;
+	
 	public Waiter( String name, String surname ) {
 		super(name, surname);
 	}
