@@ -2,7 +2,7 @@ public class Beverage extends MenuItem
 {
 	private static double lowQualityPrice;
     private static double highQualityPrice;
-	public double volume;
+	private double volume;
 	
 	public Beverage( String name, double volume ) {
 		super(name);
@@ -19,14 +19,13 @@ public class Beverage extends MenuItem
 	}
 	
 	@Override
-	public void setLowQualityPrice(double price) {
+	public void setLowQualityPrice( double price ) {
 		lowQualityPrice = price;
 	}
 
 	@Override
-	public void setHighQualityPrice(double price) {
+	public void setHighQualityPrice( double price ) {
 		highQualityPrice  = price; 
-		
 	}
 	
 }

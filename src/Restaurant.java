@@ -4,30 +4,26 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputation;
-	
+	public int reputationPoints = 15;
 	public double budget = 10000.0;
-
 	public String name;
-	
 	public String address;
-	
 	public String city;
 	
-	private java.util.List<Table> tables;
-	
 	private Barman barman;
-	
-	private java.util.List<Waiter> waiters;
-	
 	private Chef chef;
-
-	private List foodItems;
-	
-	private MenuItem menuItem;
+	private java.util.List<Waiter> waiters;
 	
 	private Table table;
 	
+	
+	public int reputation;
+	
+	
+	private java.util.List<MenuItem> menu;
+	
+	
+	private java.util.List<Table> tables;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -49,18 +45,11 @@ public class Restaurant{
 		waiters.add(new Waiter("Kelly", "Kapoor"));
 	}
 	
-	public void payMonthlyCosts( )
-	{
+	public void payMonthlyCosts( ){
 		
 	}
 	
-	private void initDishes( )
-	{
-		
-	}
-	
-	private void initBeverages( )
-	{
+	private void initMenu( ){
 		
 	}
 	
@@ -133,6 +122,5 @@ public class Restaurant{
 	{
 		return false;
 	}
-	
 	
 }

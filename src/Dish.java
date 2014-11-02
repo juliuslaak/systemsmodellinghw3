@@ -20,13 +20,12 @@ public class Dish extends MenuItem
 	}
 
 	@Override
-	public void setLowQualityPrice(double price) {
+	public void setLowQualityPrice( double price ) {
 		lowQualityPrice = price;
 	}
 
 	@Override
-	public void setHighQualityPrice(double price) {
+	public void setHighQualityPrice( double price ) {
 		highQualityPrice  = price; 
-		
 	}
 }
