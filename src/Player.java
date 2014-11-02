@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Player
 {
-	private String name;
+	public String name;
 	private Restaurant restaurant;
 	
 	public Player( ) throws IOException {

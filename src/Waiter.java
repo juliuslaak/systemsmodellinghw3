@@ -1,7 +1,3 @@
-/**
- * @(#) Waiter.java
- */
-
 public class Waiter extends Employee
 {
 	private java.util.List<Table> table;

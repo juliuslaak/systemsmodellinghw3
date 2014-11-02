@@ -1,13 +1,10 @@
 import java.io.IOException;
 
-/**
- * @(#) Restaurant.java
- */
 public class Restaurant{
 	
-	public int reputation = 15;
+	public int reputation;
 	
-	public float budget = 10000;
+	public float budget = 10000.0;
 	
 	public String name;
 	
@@ -36,6 +33,12 @@ public class Restaurant{
 		System.out.print("Enter city:");
 		city = GameController.in.readLine();
 	}
+	
+	
+	private MenuItem menuItem;
+	
+	
+	private Table table;
 	
 	public void payMonthlyCosts( )
 	{

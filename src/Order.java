@@ -2,7 +2,7 @@ public class Order
 {
 	public String orderId;
 	
-	public int date;
+	public date date;
 	
 	private Beverage beverage;
 	
@@ -18,6 +18,19 @@ public class Order
 	public float calculateCost( )
 	{
 		return 0;
+	}
+	
+	
+
+	public Dish chooseRandomDish( )
+	{
+		return null;
+	}
+	
+	
+	public Beverage chooseRandomBev( )
+	{
+		return null;
 	}
 	
 	

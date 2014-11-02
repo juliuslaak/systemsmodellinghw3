@@ -1,7 +1,3 @@
-/**
- * @(#) Employee.java
- */
-
 public abstract class Employee
 {
 	public String name;
@@ -17,7 +13,7 @@ public abstract class Employee
 		return 0;
 	}
 	
-	public abstract void raiseEmployeeExperience( );
+	public void raiseEmployeeExperience( );
 	
 	public int increaseWage( )
 	{

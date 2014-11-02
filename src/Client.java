@@ -1,7 +1,3 @@
-/**
- * @(#) Client.java
- */
-
 public class Client
 {
 	private Person person;

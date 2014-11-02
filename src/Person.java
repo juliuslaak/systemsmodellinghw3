@@ -1,9 +1,5 @@
 import java.util.Collection;
 
-/**
- * @(#) Person.java
- */
-
 public class Person
 {
 	public String name;

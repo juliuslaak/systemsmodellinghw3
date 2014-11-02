@@ -1,7 +1,3 @@
-/**
- * @(#) Chef.java
- */
-
 public class Chef extends Employee
 {
 	public int taxCode;

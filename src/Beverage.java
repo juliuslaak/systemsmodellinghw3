@@ -1,8 +1,4 @@
-/**
- * @(#) Beverage.java
- */
-
-public class Beverage extends FoodItem
+public class Beverage extends MenuItem
 {
 	public float volume;
 	

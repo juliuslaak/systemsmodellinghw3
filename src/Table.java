@@ -1,7 +1,3 @@
-/**
- * @(#) Table.java
- */
-
 public class Table
 {
 	public int number;
