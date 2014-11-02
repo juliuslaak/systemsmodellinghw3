@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.TimerTask;
 import java.util.Scanner;
 import java.io.InputStreamReader;
@@ -165,7 +166,8 @@ public class GameController {
 		
 		assignWaitersToTables();
 		
-		chooseClients();
+		List<Client> clients = new ArrayList<Client>();
+		chooseClients(clients);
 		
 	}
 
@@ -187,22 +189,59 @@ public class GameController {
 		}
 	}
 
-	private static void chooseClients() {
+	private static void chooseClients(List<Client> clients) {
 		
 		int reputation = player.getRestaurant().reputation;
-		clients = new ArrayList<Client>();
 		
+		List<Person> personsToChooseFrom = new ArrayList<Person>(persons.size());
+		personsToChooseFrom.addAll(persons);
+		
+		List<Table> tablesToChooseFrom = player.getRestaurant().tables;
+				
 		if (reputation < 15) {
-			for (int i = 1;i<=2;i++) {
-				clients.add(new Client());
+			for (int i = 1; i<=2; i++) {
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
 			}
 		}
 		else if (reputation > 29) {
-			
+			for (int i = 1; i<=9; i++) {
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
+			}
 		}
 		else {
-			
+			for (int i = 1; i<=5; i++) {
+				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
+			}
 		}
+		
+	}
+
+	private static void generateClient(List<Client> clients, 
+			List<Person> personsToChooseFrom, List<Table> tablesToChooseFrom) {
+		
+		// Pick random table from empty tables
+		Random randomGenerator = new Random();
+		int indexOfTable = randomGenerator.nextInt(tablesToChooseFrom.size());
+        Table t = tablesToChooseFrom.get(indexOfTable);
+		
+        // Assign two clients to that table
+        for (int i = 1; i<=2; i++) {
+			for (Person p : personsToChooseFrom) {
+				if (p.getcurrentlyClient() == false) {
+					
+					clients.add(new Client(p,t));
+					p.setcurrentlyClient(true);
+					
+					personsToChooseFrom.remove(p);
+					
+					break;
+				}
+			}
+		}
+        
+        // That table is full now
+		tablesToChooseFrom.remove(t);
+		
 	}
 
 	/**

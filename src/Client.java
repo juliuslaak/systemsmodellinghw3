@@ -1,3 +1,6 @@
+import java.util.Collections;
+import java.util.List;
+
 public class Client
 {
 	private Person person;
@@ -6,7 +9,9 @@ public class Client
 	
 	private Table table;
 	
-	public Client() {
+	public Client(Person p, Table t) {
+		this.person = p;
+		this.table = t;
 	}
 
 

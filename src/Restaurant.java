@@ -14,16 +14,9 @@ public class Restaurant{
 	private Chef chef;
 	private java.util.List<Waiter> waiters;
 	
-	private Table table;
-	
-	
-	public int reputation;
-	
-	
 	private java.util.List<MenuItem> menu;
 	
-	
-	private java.util.List<Table> tables;
+	java.util.List<Table> tables;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -54,10 +47,6 @@ public class Restaurant{
 	}
 	
 	public void payMonthlyCosts( ){
-
-	}
-	
-	public void payMonthlyCosts( ){
 		
 	}
 	
@@ -65,7 +54,7 @@ public class Restaurant{
 		menu = new ArrayList<MenuItem>();
 		
 		//Dishes
-		menu.add(new Dish("French fries", 500))
+		menu.add(new Dish("French fries", 500));
 		//Beverages
 	}
 	
