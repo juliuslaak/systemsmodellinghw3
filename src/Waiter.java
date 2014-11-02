@@ -1,11 +1,11 @@
 public class Waiter extends Employee
 {
 	public final int COURSE_COST = 800;
-	private java.util.List<Table> table;
 	public int nrOfTablesAssigned;
 	
 	public Waiter( String name, String surname ) {
 		super(name, surname);
+		this.nrOfTablesAssigned = 0;
 	}
 
 	public double computePay( )

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputation = 15;
+	public int reputation = 30;
 	public double budget = 10000.0;
 	public String name;
 	public String address;
@@ -27,6 +27,8 @@ public class Restaurant{
 		
 		System.out.print("Enter city:");
 		city = GameController.in.readLine();
+		
+		System.out.println("\n");
 		
 		//tax code chosen arbitrarily because I have no idea what it is
 		chef = new Chef("Micheal", "Scott", 123);
@@ -74,10 +76,6 @@ public class Restaurant{
 		return 0;
 	}
 	
-	public void assignTablesToWaiters( )
-	{
-		
-	}
 	
 	public boolean checkIfBudgetEnough( double cost ){
 		if(cost > budget){
