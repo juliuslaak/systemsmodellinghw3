@@ -177,13 +177,13 @@ public class GameController extends TimerTask {
 		}
 	}
 
-    /**
-	 * Prints everything that user has to see ...
-	 */
 	private static void showGameStateAndOperations( ) {
 	
+		Integer rest = player.getRestaurant().reputation;
+		
 		System.out.println("--------------------------------------------");
-		System.out.println("Day: " + Integer.toString(currentDay) + "\tBudget: " + player.getRestaurant().getBudget());
+		System.out.println("Day: " + Integer.toString(currentDay) + "\tBudget: " + player.getRestaurant().getBudget()
+				+ "\tReputation: " + rest.toString());
 		System.out.println(" ");
 		System.out.println("Actions");
 		System.out.println("1. Train workers");
