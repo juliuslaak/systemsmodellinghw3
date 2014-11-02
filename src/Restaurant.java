@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputationPoints = 15;
+	int reputation = 15;
 	public double budget = 10000.0;
 	public String name;
 	public String address;
@@ -14,16 +14,9 @@ public class Restaurant{
 	private Chef chef;
 	private java.util.List<Waiter> waiters;
 	
-	private Table table;
-	
-	
-	public int reputation;
-	
-	
 	private java.util.List<MenuItem> menu;
-	
-	
 	private java.util.List<Table> tables;
+	
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -55,8 +48,18 @@ public class Restaurant{
 		menu = new ArrayList<MenuItem>();
 		
 		//Dishes
-		menu.add(new Dish("French fries", 500))
+		menu.add(new Dish("French fries", 500));
+		menu.add(new Dish("Chicken", 700));
+		menu.add(new Dish("Spaghetti", 400));
+		menu.add(new Dish("Hamburger", 500));
+		menu.add(new Dish("Roasted beef", 800));
+	
 		//Beverages
+		menu.add(new Beverage("Water", 500));
+		menu.add(new Beverage("Coffee", 300));
+		menu.add(new Beverage("Coca-Cola", 500));
+		menu.add(new Beverage("Orange juice", 700));
+		menu.add(new Beverage("Tea", 300));
 	}
 	
 	public void initMenuItemsCorrespondingPrices( )
@@ -75,12 +78,8 @@ public class Restaurant{
 		return 0;
 	}
 	
-	public void assignTablesToWaiters( )
-	{
-		
-	}
 	
-	public boolean checkIfBudgetEnough( double cost ){
+public boolean checkIfBudgetEnough( double cost ){
 		if(cost > budget){
 			return false;
 		}else{
@@ -123,10 +122,9 @@ public class Restaurant{
 	public void setBudget( double budget ) {
 		this.budget = budget;
 	}
-
-	public boolean checkIfBudgetEnough( )
-	{
-		return false;
-	}
 	
+	public java.util.List<MenuItem> getMenu() {
+		return menu;
+	}
+
 }

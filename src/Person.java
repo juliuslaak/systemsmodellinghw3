@@ -22,7 +22,10 @@ public class Person
 	
 	private Integer nrOfBev;
 	
-	public Person (String name, String surname, String telephoneNumber, String taxCode) {
+	
+	private boolean currentlyClient;
+	
+	public Person( String name, String surname, String phoneNr, String taxCode ) {
 		this.name = name;
 		this.surname = surname;
 		this.telephoneNumber = telephoneNumber;
