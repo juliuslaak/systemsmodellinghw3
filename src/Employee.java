@@ -13,7 +13,8 @@ public abstract class Employee
 		return 0;
 	}
 	
-	public void raiseEmployeeExperience( );
+	public void raiseEmployeeExperience( ) {
+	}
 	
 	public int increaseWage( )
 	{

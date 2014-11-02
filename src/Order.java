@@ -2,7 +2,7 @@ public class Order
 {
 	public String orderId;
 	
-	public date date;
+	public Integer date;
 	
 	private Beverage beverage;
 	

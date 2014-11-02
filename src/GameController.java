@@ -7,13 +7,13 @@ import java.io.IOException;
 
 
 
-public class GameController {
+public class GameController extends TimerTask {
 	
 	private static final long DAY_LENGTH = 1000; //day length in milliseconds
-	private static Scanner in;
+	static BufferedReader in;
 	
-	private Player player;
-	private RankingList rankingList;
+	private static Player player;
+	private static RankingList rankingList;
 	
 	private static int currentDay;
 	
@@ -65,7 +65,7 @@ public class GameController {
 
 	}
 
-	private static void startGame( ) {
+	private static void startGame( ) throws IOException {
 		
 		player = new Player();
 		
@@ -73,7 +73,7 @@ public class GameController {
 		
 		//Timer for counting days
 		Timer timer = new Timer();
-		timer.schedule(new GameController(), 0, DAY_LENGTH);
+		timer.schedule(new GameController(), 0l, DAY_LENGTH);
 		
 		boolean correctInput = true;
 		boolean quitGame = false;

@@ -1,7 +1,6 @@
 /**
  * @(#) MenuItem.java
  */
-
 public class MenuItem
 {
 	public String name;

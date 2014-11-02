@@ -1,10 +1,11 @@
+import java.util.List;
 import java.io.IOException;
 
 public class Restaurant{
 	
 	public int reputation;
 	
-	public float budget = 10000.0;
+	public double budget = 10000.0;
 	
 	public String name;
 	
@@ -20,7 +21,7 @@ public class Restaurant{
 	
 	private Chef chef;
 	
-	private java.util.List foodItems;
+	private List foodItems;
 	
 	
 	public Restaurant( ) throws IOException {
