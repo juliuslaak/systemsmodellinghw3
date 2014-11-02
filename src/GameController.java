@@ -22,6 +22,9 @@ public class GameController extends TimerTask {
 	
 	private static RankingList rankingList;
 	
+	
+	private static final long DAY_LENGTH = 1000;
+	
 	public static void main( String[] args ) throws IOException {
 		
 		in = new BufferedReader(new InputStreamReader(System.in));
@@ -200,6 +203,13 @@ public class GameController extends TimerTask {
 		for(int i = 0; i < 2; i++){
 			System.out.println();
 		}
+	}
+	
+	
+
+	private static void showRankings( RankingList rankingList )
+	{
+		
 	}
 	
 	

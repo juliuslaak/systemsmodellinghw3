@@ -96,4 +96,11 @@ public float receivePaymentForOrder( )
 		return Math.round(budget*100)/100;
 	}
 	
+
+	public int calculateReputation( )
+	{
+		return 0;
+	}
+	
+	
 }

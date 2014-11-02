@@ -1,20 +1,33 @@
 public abstract class Employee
 {
-	public String name;
+	private String name;
+	private String surname;
+	LevelOfExperience experience;
 	
-	public String surname;
+	public Employee( String name, String surname ) {
+		this.name = name;
+		this.surname = surname;
+		experience = LevelOfExperience.LOW;
+	}
 	
-	public LevelOfExperience experience;
+	public abstract double computePay( );
+	public abstract double getCourseCost( );
 	
-	public abstract float computePay( );
+	public void raiseEmployeeExperience( ) {
+		if(experience == LevelOfExperience.LOW){
+			experience = LevelOfExperience.MEDIUM;
+		}else if(experience == LevelOfExperience.MEDIUM){
+			experience = LevelOfExperience.HIGH;
+		}
+	}
 	
+
+
 	public float payWeeklySalaries( )
 	{
 		return 0;
 	}
 	
-	public void raiseEmployeeExperience( ) {
-	}
 	
 	public int increaseWage( )
 	{

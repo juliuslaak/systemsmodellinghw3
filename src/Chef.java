@@ -1,26 +1,38 @@
 public class Chef extends Employee
 {
-	public int taxCode;
-	
-	public float computePay( )
-	{
-		return 0;
+	public final int COURSE_COST = 1200;
+	private int taxCode;
+
+	public Chef( String name, String surname, int taxCode ) {
+		super(name, surname);
+		this.taxCode = taxCode;
 	}
 	
+	@Override
+	public double computePay( ) {
+		if(experience == LevelOfExperience.LOW){
+			return 300;
+		}else if(experience == LevelOfExperience.MEDIUM){
+			return 400;
+		}else{
+			return 500;
+		}
+	}
+	
+	@Override
+	public double getCourseCost( ) {
+		return COURSE_COST;
+	}
+
 	public Dish prepareADish( )
 	{
 		return null;
 	}
 	
+	
 	public Order forwardDishOrder( )
 	{
 		return null;
-	}
-
-	@Override
-	public void raiseEmployeeExperience( ) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	
