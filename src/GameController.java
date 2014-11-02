@@ -18,11 +18,7 @@ public class GameController extends TimerTask {
 	
 	private static Player player;
 	
-	private static int currentDay;
-	
-	
-	private static final long DAY_LENGTH = 1000;
-	
+	private static int currentDay;	
 	
 	private static RankingList rankingList;
 	
@@ -204,23 +200,6 @@ public class GameController extends TimerTask {
 		for(int i = 0; i < 2; i++){
 			System.out.println();
 		}
-	}
-
-
-	/**
-	 * Operations that will be done in the beginning of every new day
-	 */
-	@Override
-	public void run( )
-	{
-		
-	}
-	
-	
-
-	private static void showRankings( RankingList rankingList )
-	{
-		
 	}
 	
 	
