@@ -22,13 +22,13 @@ public class Person
 	
 	private Integer nrOfBev;
 	
-	public Collection pickRandomClientsForRestaurant( )
-	{
-		return null;
+	public Person( String name, String surname, String phoneNr, String taxCode ){
+	    this.name = name;
+	    this.surname = surname;
+	    this.telephoneNumber = phoneNr;
+	    this.taxCode = taxCode;
 	}
 	
-	
-
 	public void setCalCount( Integer calCount )
 	{
 		this.calCount=calCount;
