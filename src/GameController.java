@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.Scanner;
+import java.util.TimerTask;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
@@ -9,13 +9,15 @@ import java.io.IOException;
 
 public class GameController extends TimerTask {
 	
-	private static final long DAY_LENGTH = 1000; //day length in milliseconds
 	static BufferedReader in;
 	
 	private static Player player;
 	private static RankingList rankingList;
 	
 	private static int currentDay;
+	
+	
+	private static final long DAY_LENGTH = 1000;
 	
 	public static void main( String[] args ) {
 		
@@ -24,13 +26,7 @@ public class GameController extends TimerTask {
 		boolean running = true;
 		boolean correctInput = true;
 		
-		while(running){
-			
-			//If previous input was wrong print error message
-			if(!correctInput){
-				System.out.println("Wrong input!\n");
-				correctInput = true;
-			}
+		while(running) {
 			
 			showMainMenu();
 			int input = -1;
@@ -60,6 +56,11 @@ public class GameController extends TimerTask {
 					break;
 			}
 			
+			if(!correctInput){
+				System.out.println("Wrong input!\n");
+				correctInput = true;
+			}
+			
 			clearScreen();
 		}
 
@@ -71,20 +72,12 @@ public class GameController extends TimerTask {
 		
 		currentDay = 0;
 		
-		//Timer for counting days
-		Timer timer = new Timer();
-		timer.schedule(new GameController(), 0l, DAY_LENGTH);
 		
 		boolean correctInput = true;
 		boolean quitGame = false;
 		
 		while(currentDay <= 30 && !quitGame){
 			
-			//If previous input was wrong print error message
-			if(!correctInput){
-				System.out.println("Wrong input!\n");
-				correctInput = true;
-			}
 			
 			showGameStateAndOperations();
 			int operationNr = Integer.parseInt(in.readLine());
@@ -113,7 +106,6 @@ public class GameController extends TimerTask {
 					String answer = in.readLine();
 					if(answer.equals("y")){
 						quitGame = true;
-						timer.cancel();
 					}else if(answer.equals("n")){
 						quitGame = false;
 					}else{
@@ -123,6 +115,11 @@ public class GameController extends TimerTask {
 				default:
 					correctInput = false;
 					break;
+			}			
+			
+			if(!correctInput){
+				System.out.println("Wrong input!\n");
+				correctInput = true;
 			}
 			
 			clearScreen();
@@ -172,18 +169,20 @@ public class GameController extends TimerTask {
 	}
 	
 	private static void clearScreen( ) {
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 3; i++){
 			System.out.println();
 		}
 	}
-	
+
+
 	/**
 	 * Operations that will be done in the beginning of every new day
 	 */
 	@Override
-	public void run( ) {
-		//TODO
-		currentDay+=1;
+	public void run( )
+	{
+		
 	}
-
+	
+	
 }
