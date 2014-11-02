@@ -125,5 +125,16 @@ public class Restaurant{
 	{
 		return false;
 	}
+
+	public boolean payWeeklySalaries(double salary){
+		this.budget = this.budget - salary;
+		if (this.budget < 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	
 }

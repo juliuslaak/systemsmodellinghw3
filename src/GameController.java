@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -26,6 +27,8 @@ public class GameController {
 	private static java.util.List<Client> clients;
 	
 	private static int currentDay;
+	
+	private static int[] daysOfWeekends = new int[] {7,14,21,28};
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -107,7 +110,6 @@ public class GameController {
 		
 		while(currentDay <= 30 && !quitGame){
 			
-			
 			showGameStateAndOperations();
 			int operationNr = Integer.parseInt(in.readLine());
 			
@@ -120,7 +122,7 @@ public class GameController {
 					//TODO
 					break;
 				case 4:
-					startDay();
+					quitGame = startDay(quitGame);
 					break;
 				case 5:
 					System.out.println("By quitting before the end of the game you lose your points.");
@@ -149,7 +151,7 @@ public class GameController {
 		}
 	}
 	
-	private static void startDay() {
+	private static boolean startDay(boolean quitGame) {
 		
 		for (Waiter w : player.getRestaurant().getWaiters()) {
 			w.nrOfTablesAssigned = 0;
@@ -163,10 +165,28 @@ public class GameController {
 		
 		System.out.println("Day is over!");
 		
+		
+		// Pay salaries and if budget is negative, quit game
+		if (Arrays.asList(daysOfWeekends).contains(currentDay)) {
+			Restaurant restaurant = player.getRestaurant();
+			
+			Chef chef = restaurant.getChef();
+			quitGame = player.getRestaurant().payWeeklySalaries(chef.computePay());
+			
+			Barman barman = restaurant.getBarman();
+			quitGame = player.getRestaurant().payWeeklySalaries(barman.computePay());
+			
+			for(Waiter w : restaurant.getWaiters()){
+				quitGame = player.getRestaurant().payWeeklySalaries(w.computePay());
+			}
+		}
+		
 		initializeWaiter();
 		initializeTables();
 		clients = null;
 		currentDay++;
+		
+		return quitGame;
 		
 	}
 
