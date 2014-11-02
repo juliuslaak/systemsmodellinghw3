@@ -1,14 +1,14 @@
 import java.io.BufferedReader;
 import java.util.Timer;
+import java.io.FileReader;
+import java.nio.file.Path;
+import java.io.File;
+import java.nio.file.Files;
 import java.util.Scanner;
 import java.util.TimerTask;
-import java.io.File;
-import java.io.FileReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.IOException;
 
 
 
@@ -22,6 +22,9 @@ public class GameController extends TimerTask {
 	
 	
 	private static final long DAY_LENGTH = 1000;
+	
+	
+	private static RankingList rankingList;
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -152,7 +155,7 @@ public class GameController extends TimerTask {
 	}
 
     
-	private static void showRankings() throws IOException {
+	private static void showRankings( ) throws IOException {
 		
 		File dir = new File(".");
 		File file = new File(dir.getCanonicalPath() + File.separator + "ranking.txt");
@@ -177,6 +180,9 @@ public class GameController extends TimerTask {
 		}
 	}
 
+	/**
+	 * Prints everything that user has to see ...
+	 */
 	private static void showGameStateAndOperations( ) {
 	
 		Integer rest = player.getRestaurant().reputation;
@@ -206,6 +212,13 @@ public class GameController extends TimerTask {
 	 */
 	@Override
 	public void run( )
+	{
+		
+	}
+	
+	
+
+	private static void showRankings( RankingList rankingList )
 	{
 		
 	}
