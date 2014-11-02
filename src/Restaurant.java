@@ -5,29 +5,25 @@ import java.io.IOException;
 public class Restaurant{
 	
 	public int reputation = 15;
-	
 	public double budget = 10000.0;
-
 	public String name;
-	
 	public String address;
-	
 	public String city;
 	
-	public java.util.List<Table> tables;
-	
 	private Barman barman;
-	
-	private java.util.List<Waiter> waiters;
-	
 	private Chef chef;
-
-	private List foodItems;
-	
-	private MenuItem menuItem;
+	private java.util.List<Waiter> waiters;
 	
 	private Table table;
 	
+	
+	public int reputation;
+	
+	
+	private java.util.List<MenuItem> menu;
+	
+	
+	private java.util.List<Table> tables;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -47,27 +43,30 @@ public class Restaurant{
 		waiters.add(new Waiter("Pam", "Beesly"));
 		waiters.add(new Waiter("Jim", "Halpert"));
 		waiters.add(new Waiter("Kelly", "Kapoor"));
-		
+
 		tables = new ArrayList<Table>();
 		for (int i = 1; i<10; i++) {
 			tables.add(new Table(i));
 		}
+
+		initMenu();
 		
 	}
 	
-	public void payMonthlyCosts( )
-	{
+	public void payMonthlyCosts( ){
+
+	}
+	
+	public void payMonthlyCosts( ){
 		
 	}
 	
-	private void initDishes( )
-	{
+	private void initMenu( ){
+		menu = new ArrayList<MenuItem>();
 		
-	}
-	
-	private void initBeverages( )
-	{
-		
+		//Dishes
+		menu.add(new Dish("French fries", 500))
+		//Beverages
 	}
 	
 	public void initMenuItemsCorrespondingPrices( )
@@ -139,6 +138,5 @@ public class Restaurant{
 	{
 		return false;
 	}
-	
 	
 }
