@@ -24,15 +24,5 @@ public class Waiter extends Employee
 	public double getCourseCost( ) {
 		return COURSE_COST;
 	}
-
-	
-
-
-@Override
-	public void raiseEmployeeExperience( )
-	{
-		
-	}
-	
 	
 }

@@ -3,8 +3,8 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
-import java.util.Scanner;
 import java.util.TimerTask;
+import java.util.Scanner;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.io.IOException;
@@ -87,7 +87,7 @@ public class GameController {
 			switch (operationNr) {
 				//train workers
 				case 1:
-					showTrainingOptions();
+					showTrainingOptionsAndTrain();
 					break;
 				//Assign tables
 				case 2:
@@ -101,8 +101,12 @@ public class GameController {
 					//choose foodItems for Menu
 					//TODO
 					break;
-				//Quit to main menu
+				//Open restaurant for new day
 				case 4:
+					//TODO
+					break;
+				//Quit to main menu
+				case 5:
 					System.out.println("Are you sure you wish to quit game?(y/n)");
 					String answer = in.readLine();
 					if(answer.equals("y")){
@@ -130,10 +134,65 @@ public class GameController {
 	/**
 	 * Shows table of workers together with their level of experience
 	 * and cost of training.
+	 * @throws IOException
+	 * @throws NumberFormatException
 	 */
-	private static void showTrainingOptions( ) {
-		//TODO
-		System.out.println("Table of workers should be here ...");
+	private static void showTrainingOptionsAndTrain( ) throws NumberFormatException, IOException {
+		Restaurant restaurant = player.getRestaurant();
+		
+		System.out.println("\tTrain worker:");
+		
+		Chef chef = restaurant.getChef();
+		System.out.println("\t" + "1. Chef: " + chef.getName() + " " + chef.getSurname() + "\t\tExp: " + chef.getExperience() + 
+				"\t\tTrainging cost: " + chef.getCourseCost());
+		
+		Barman barman = restaurant.getBarman();
+		System.out.println("\t" + "2. Barman: " + barman.getName() + " " + barman.getSurname() + "\tExp: " + barman.getExperience() + 
+				"\t\tTrainging cost: " + barman.getCourseCost());
+		
+		int i = 3;
+		for(Waiter w : restaurant.getWaiters()){
+			System.out.println("\t" + i + ". Waiter: " + w.getName() + " " + w.getSurname() + "\t\tExp: " + w.getExperience() + 
+					"\t\tTrainging cost: " + w.getCourseCost());
+			i++;
+		}
+		
+		System.out.println("\t"+i+". Back");
+		System.out.print("\tEnter acion number:");
+		
+		//pick correct employee
+		int operationNr = Integer.parseInt(in.readLine());
+		Employee employee = null;
+		switch (operationNr) {
+			case 1:
+				employee = chef;
+				break;
+			case 2:
+				employee = barman;
+				break;
+			case 3:
+				employee = restaurant.getWaiters().get(0);
+				break;
+			case 4:
+				employee = restaurant.getWaiters().get(1);
+				break;
+			case 5:
+				employee = restaurant.getWaiters().get(2);
+				break;
+			default:
+				break;
+		}
+		
+		//Train worker
+		if(employee != null){
+			if(restaurant.checkIfBudgetEnough(employee.getCourseCost())){
+				employee.raiseEmployeeExperience();
+				restaurant.setBudget(restaurant.getBudget()-employee.getCourseCost());
+				System.out.println("Experience increased!");
+			}else{
+				System.out.println("Not enough money.");
+			}
+		}		
 	}
 
 	private static void showMainMenu( ) {
@@ -188,7 +247,8 @@ public class GameController {
 		System.out.println("1. Train workers");
 		System.out.println("2. Assign tables");
 		System.out.println("3. Design menu");
-		System.out.println("4. Quit game\n");
+		System.out.println("4. Open restaurant");
+		System.out.println("5. Quit game\n");
 	    
 		System.out.print("Enter action number: ");
 	}
@@ -197,6 +257,17 @@ public class GameController {
 		for(int i = 0; i < 2; i++){
 			System.out.println();
 		}
+	}
+	
+	
+
+	/**
+	 * Shows table of workers together with their level of experience
+	 * and cost of training.
+	 */
+	private static void showTrainingOptions( )
+	{
+		
 	}
 	
 	
