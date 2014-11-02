@@ -4,16 +4,17 @@ public abstract class Employee
 	private String surname;
 	LevelOfExperience experience;
 	
-	public Employee( String name, String surname ) {
+	public Employee(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
 		experience = LevelOfExperience.LOW;
 	}
 	
-	public abstract double computePay( );
-	public abstract double getCourseCost( );
+	public abstract double computePay();
+	public abstract double getCourseCost();
 	
-	public void raiseEmployeeExperience( ) {
+	
+	public void raiseEmployeeExperience() {
 		if(experience == LevelOfExperience.LOW){
 			experience = LevelOfExperience.MEDIUM;
 		}else if(experience == LevelOfExperience.MEDIUM){
@@ -22,17 +23,4 @@ public abstract class Employee
 	}
 	
 
-
-	public float payWeeklySalaries( )
-	{
-		return 0;
-	}
-	
-	
-	public int increaseWage( )
-	{
-		return 0;
-	}
-	
-	
 }
