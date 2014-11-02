@@ -43,6 +43,8 @@ public class Restaurant{
 		waiters.add(new Waiter("Pam", "Beesly"));
 		waiters.add(new Waiter("Jim", "Halpert"));
 		waiters.add(new Waiter("Kelly", "Kapoor"));
+		
+		initMenu();
 	}
 	
 	public void payMonthlyCosts( ){
@@ -50,7 +52,11 @@ public class Restaurant{
 	}
 	
 	private void initMenu( ){
+		menu = new ArrayList<MenuItem>();
 		
+		//Dishes
+		menu.add(new Dish("French fries", 500))
+		//Beverages
 	}
 	
 	public void initMenuItemsCorrespondingPrices( )

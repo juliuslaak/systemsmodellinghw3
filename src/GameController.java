@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.TimerTask;
 import java.util.Scanner;
 import java.io.InputStreamReader;
@@ -16,6 +17,8 @@ public class GameController {
 	static BufferedReader in;
 	
 	private static Player player;
+	
+	private static java.util.List<Person> persons;
 	
 	private static int currentDay;
 	
@@ -71,6 +74,26 @@ public class GameController {
 		
 		player = new Player();
 		
+		persons = new ArrayList<Person>();
+		persons.add(new Person("Client1","Surname1", "1-800-900-32", "10055"));
+		persons.add(new Person("Client2","Surname2", "2-800-900-32", "20055"));
+		persons.add(new Person("Client3","Surname3", "3-800-900-32", "30055"));
+		persons.add(new Person("Client4","Surname4", "4-800-900-32", "40055"));
+		persons.add(new Person("Client5","Surname5", "5-800-900-32", "50055"));
+		persons.add(new Person("Client6","Surname6", "6-800-900-32", "60055"));
+		persons.add(new Person("Client7","Surname7", "7-800-900-32", "70055"));
+		persons.add(new Person("Client8","Surname8", "8-800-900-32", "80055"));
+		persons.add(new Person("Client9","Surname9", "9-800-900-32", "90055"));
+		persons.add(new Person("Client10","Surname10", "10-800-900-32", "100055"));
+		persons.add(new Person("Client11","Surname11", "11-800-900-32", "110055"));
+		persons.add(new Person("Client12","Surname12", "12-800-900-32", "120055"));
+		persons.add(new Person("Client13","Surname13", "13-800-900-32", "130055"));
+		persons.add(new Person("Client14","Surname14", "14-800-900-32", "140055"));
+		persons.add(new Person("Client15","Surname15", "15-800-900-32", "150055"));
+		persons.add(new Person("Client16","Surname16", "16-800-900-32", "160055"));
+		persons.add(new Person("Client17","Surname17", "17-800-900-32", "170055"));
+		persons.add(new Person("Client18","Surname18", "18-800-900-32", "180055"));
+		
 		currentDay = 0;
 		
 		
@@ -101,11 +124,10 @@ public class GameController {
 					//choose foodItems for Menu
 					//TODO
 					break;
-				//Open restaurant for new day
 				case 4:
-					//TODO
+					startDay();
 					break;
-				//Quit to main menu
+				
 				case 5:
 					System.out.println("Are you sure you wish to quit game?(y/n)");
 					String answer = in.readLine();
@@ -131,6 +153,19 @@ public class GameController {
 		}
 	}
 	
+	private static void startDay() {
+		
+		assignWaitersToTables();
+		
+	}
+
+	private static void assignWaitersToTables() {
+		
+		for (Table t : player.getRestaurant().tables) {
+			System.out.println(t.toString());
+		}
+	}
+
 	/**
 	 * Shows table of workers together with their level of experience
 	 * and cost of training.
