@@ -14,7 +14,7 @@ public class Restaurant{
 	
 	public String city;
 	
-	private java.util.List<Table> tables;
+	public java.util.List<Table> tables;
 	
 	private Barman barman;
 	
@@ -47,6 +47,11 @@ public class Restaurant{
 		waiters.add(new Waiter("Pam", "Beesly"));
 		waiters.add(new Waiter("Jim", "Halpert"));
 		waiters.add(new Waiter("Kelly", "Kapoor"));
+		
+		tables = new ArrayList<Table>();
+		for (int i = 1; i<10; i++) {
+			tables.add(new Table(i));
+		}
 	}
 	
 	public void payMonthlyCosts( )

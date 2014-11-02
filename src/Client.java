@@ -5,12 +5,6 @@ public class Client
 	private Order order;
 	
 	private Table table;
-	
-	
-
-
-
-
 
 	public void updatePerson( )
 	{
