@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.List;
 import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.TimerTask;
 import java.util.Scanner;
+import java.util.TimerTask;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.io.IOException;
@@ -119,7 +122,7 @@ public class GameController {
 					showTrainingOptionsAndTrain();
 					break;
 				case 3:
-					//TODO
+					designMenu();
 					break;
 				case 4:
 					quitGame = startDay(quitGame);
@@ -148,6 +151,83 @@ public class GameController {
 			}
 			
 			clearScreen();
+		}
+	}
+	
+	private static void designMenu() throws NumberFormatException, IOException {
+		
+		boolean finished = false;
+		List<MenuItem> menu = player.getRestaurant().getMenu();
+		
+		
+		while(!finished){
+			System.out.println("\tActions");
+			System.out.println("\t1.Show menu");
+			System.out.println("\t2.Pick low quality price for dishes");
+			System.out.println("\t3.Pick high quality price for dishes");
+			System.out.println("\t4.Pick low quality price for beverages");
+			System.out.println("\t5.Pick high quality price for beverages");
+			System.out.println("\t6.Pick number of high quality dishes.");
+			System.out.println("\t7.Pick number of high quality beverages");
+			System.out.println("\t8.Back");
+			System.out.print("\tEnter acion number:");
+			
+			int actionNr = Integer.parseInt(in.readLine());
+			switch (actionNr) {
+				case 1:
+					printMenu();
+					break;
+				case 2:
+					System.out.print("\tEnter low quality dish price:");
+					int lowPriceDish = Integer.parseInt(in.readLine());
+					Dish.lowQualityPrice = lowPriceDish;
+					break;
+				case 3:
+					System.out.print("\tEnter high quality dish price:");
+					int highPriceDish = Integer.parseInt(in.readLine());
+					Dish.highQualityPrice = highPriceDish;
+					break;
+				case 4:
+					System.out.print("\tEnter low quality beverage price:");
+					int lowPriceBeverage = Integer.parseInt(in.readLine());
+					Beverage.lowQualityPrice = lowPriceBeverage;
+					break;
+				case 5:
+					System.out.print("\tEnter high quality beverage price:");
+					int highPriceBeverage = Integer.parseInt(in.readLine());
+					Beverage.highQualityPrice = highPriceBeverage;
+					break;
+				case 6:
+					System.out.print("Enter number of high quality dishes(1 to 5):");
+					int nrOfHighQualityDishes = Integer.parseInt(in.readLine());
+					
+			
+					for(int i = 0; i < 5; i++){
+						if(i < nrOfHighQualityDishes){
+							menu.get(i).setQualityLevel(QualityLevel.HIGH);
+						}
+					}
+					
+					break;
+				case 7:
+					break;
+				case 8:
+					finished = true;
+					break;
+
+			default:
+				break;
+			}
+		}
+		
+		
+		printMenu();
+	}
+
+	private static void printMenu() {
+		List<MenuItem> menu = player.getRestaurant().getMenu();
+		for(MenuItem item : menu){
+			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
 	}
 	
@@ -216,6 +296,7 @@ public class GameController {
 		List<Waiter> waiters = player.getRestaurant().getWaiters();
 		Collections.shuffle(waiters);
 		
+
 		for (Table t : player.getRestaurant().tables) {
 			for (Waiter w : waiters) {
 				if (w.nrOfTablesAssigned <= 3) {
@@ -415,14 +496,5 @@ public class GameController {
 	
 	
 
-	/**
-	 * Shows table of workers together with their level of experience
-	 * and cost of training.
-	 */
-	private static void showTrainingOptions( )
-	{
-		
-	}
-	
 	
 }

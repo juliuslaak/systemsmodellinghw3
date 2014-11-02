@@ -18,9 +18,11 @@ public class Person
 	
 	private Integer nrOfBev;
 	
+
 	private boolean currentlyClient;
 	
 	public Person (String name, String surname, String telephoneNumber, String taxCode) {
+
 		this.name = name;
 		this.surname = surname;
 		this.telephoneNumber = telephoneNumber;

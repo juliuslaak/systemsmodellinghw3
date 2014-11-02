@@ -1,8 +1,8 @@
 public class Dish extends MenuItem
 {
     
-	private static double lowQualityPrice;
-    private static double highQualityPrice;
+	public static double lowQualityPrice;
+    public static double highQualityPrice;
 	private int calorieCount;
 	
 	public Dish( String name, int calorieCount ) {
@@ -20,12 +20,11 @@ public class Dish extends MenuItem
 	}
 
 	@Override
-	public void setLowQualityPrice( double price ) {
-		lowQualityPrice = price;
-	}
-
-	@Override
-	public void setHighQualityPrice( double price ) {
-		highQualityPrice  = price; 
+	public double getPrice() {
+		if(qualityLevel.equals(QualityLevel.LOW)){
+			return lowQualityPrice;
+		}else{
+			return highQualityPrice;
+		}
 	}
 }

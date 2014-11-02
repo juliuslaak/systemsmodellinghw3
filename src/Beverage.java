@@ -1,7 +1,7 @@
 public class Beverage extends MenuItem
 {
-	private static double lowQualityPrice;
-    private static double highQualityPrice;
+	public static double lowQualityPrice;
+    public static double highQualityPrice;
 	private double volume;
 	
 	public Beverage( String name, double volume ) {
@@ -17,15 +17,14 @@ public class Beverage extends MenuItem
 			return 1;
 		}
 	}
-	
+		
 	@Override
-	public void setLowQualityPrice( double price ) {
-		lowQualityPrice = price;
-	}
-
-	@Override
-	public void setHighQualityPrice( double price ) {
-		highQualityPrice  = price; 
+	public double getPrice() {
+		if(qualityLevel.equals(QualityLevel.LOW)){
+			return lowQualityPrice;
+		}else{
+			return highQualityPrice;
+		}
 	}
 	
 }

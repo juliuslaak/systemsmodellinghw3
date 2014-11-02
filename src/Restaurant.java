@@ -4,7 +4,8 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputation = 30;
+	public int reputation = 15;
+
 	public double budget = 10000.0;
 	public String name;
 	public String address;
@@ -17,6 +18,7 @@ public class Restaurant{
 	private java.util.List<MenuItem> menu;
 	
 	java.util.List<Table> tables;
+	
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -57,7 +59,18 @@ public class Restaurant{
 		
 		//Dishes
 		menu.add(new Dish("French fries", 500));
+		menu.add(new Dish("Chicken", 700));
+		menu.add(new Dish("Spaghetti", 400));
+		menu.add(new Dish("Hamburger", 500));
+		menu.add(new Dish("Roasted beef", 800));
+	
+
 		//Beverages
+		menu.add(new Beverage("Water", 500));
+		menu.add(new Beverage("Coffee", 300));
+		menu.add(new Beverage("Coca-Cola", 500));
+		menu.add(new Beverage("Orange juice", 700));
+		menu.add(new Beverage("Tea", 300));
 	}
 	
 	public void initMenuItemsCorrespondingPrices( )
@@ -77,7 +90,7 @@ public class Restaurant{
 	}
 	
 	
-	public boolean checkIfBudgetEnough( double cost ){
+public boolean checkIfBudgetEnough( double cost ){
 		if(cost > budget){
 			return false;
 		}else{
@@ -136,5 +149,8 @@ public class Restaurant{
 		}
 	}
 	
-	
+	public java.util.List<MenuItem> getMenu() {
+		return menu;
+	}
+
 }
