@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputation;
+	public int reputation = 15;
 	
 	public double budget = 10000.0;
 
@@ -52,6 +52,7 @@ public class Restaurant{
 		for (int i = 1; i<10; i++) {
 			tables.add(new Table(i));
 		}
+		
 	}
 	
 	public void payMonthlyCosts( )
@@ -71,7 +72,7 @@ public class Restaurant{
 	
 	public void initMenuItemsCorrespondingPrices( )
 	{
-		
+			
 	}
 	
 	public void rateService( )

@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.TimerTask;
 import java.util.Scanner;
 import java.io.InputStreamReader;
@@ -19,6 +21,8 @@ public class GameController {
 	private static Player player;
 	
 	private static java.util.List<Person> persons;
+	
+	private static java.util.List<Client> clients;
 	
 	private static int currentDay;
 	
@@ -155,14 +159,49 @@ public class GameController {
 	
 	private static void startDay() {
 		
+		for (Waiter w : player.getRestaurant().getWaiters()) {
+			w.nrOfTablesAssigned = 0;
+		}
+		
 		assignWaitersToTables();
+		
+		chooseClients();
 		
 	}
 
 	private static void assignWaitersToTables() {
+		/**
+		 * Randomly assigns tables for waiters who have less than 3 tables assigned
+		 */
+		
+		List<Waiter> waiters = player.getRestaurant().getWaiters();
+		Collections.shuffle(waiters);
 		
 		for (Table t : player.getRestaurant().tables) {
-			System.out.println(t.toString());
+			for (Waiter w : waiters) {
+				if (w.nrOfTablesAssigned <= 3) {
+					t.waiter = w;
+					break;
+				}
+			}
+		}
+	}
+
+	private static void chooseClients() {
+		
+		int reputation = player.getRestaurant().reputation;
+		clients = new ArrayList<Client>();
+		
+		if (reputation < 15) {
+			for (int i = 1;i<=2;i++) {
+				clients.add(new Client());
+			}
+		}
+		else if (reputation > 29) {
+			
+		}
+		else {
+			
 		}
 	}
 
