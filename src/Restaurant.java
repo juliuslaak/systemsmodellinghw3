@@ -1,14 +1,15 @@
+import java.io.IOException;
+
 /**
  * @(#) Restaurant.java
  */
-
-public class Restaurant
-{
-	public String name;
+public class Restaurant{
 	
-	public int reputation;
+	public int reputation = 15;
 	
 	public float budget = 10000;
+	
+	public String name;
 	
 	public String address;
 	
@@ -23,6 +24,18 @@ public class Restaurant
 	private Chef chef;
 	
 	private java.util.List foodItems;
+	
+	
+	public Restaurant( ) throws IOException {
+		System.out.print("Enter restaurant name:");
+		name = GameController.in.readLine();
+		
+		System.out.print("Enter restaurant address:");
+		address = GameController.in.readLine();
+		
+		System.out.print("Enter city:");
+		city = GameController.in.readLine();
+	}
 	
 	public void payMonthlyCosts( )
 	{
@@ -78,6 +91,9 @@ public class Restaurant
 	{
 		return 0;
 	}
-	
+
+	public float getBudget( ) {
+		return Math.round(budget*100)/100;
+	}
 	
 }

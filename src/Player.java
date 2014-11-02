@@ -1,7 +1,16 @@
+import java.io.IOException;
+
 public class Player
 {
-	public String name;
+	private String name;
+	private Restaurant restaurant;
 	
+	public Player( ) throws IOException {
+		System.out.print("\nEnter your name:");
+		name = GameController.in.readLine();
+		
+		restaurant = new Restaurant();
+	}
 	
 	public int getDishCountForClient( Dish dish, Client client )
 	{
@@ -26,6 +35,14 @@ public class Player
 	public double getTotalMoneySpentByClient( Client client )
 	{
 		return 0;
+	}
+
+	public Restaurant getRestaurant( ) {
+		return restaurant;
+	}
+
+	public String getName( ) {
+		return name;
 	}
 	
 }
