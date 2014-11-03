@@ -19,7 +19,7 @@ public class Restaurant{
 	private static ArrayList<Dish> dishMenu;
 	private static ArrayList<Beverage> beverageMenu;
 	
-	java.util.List<Table> tables;
+	ArrayList<Table> tables;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Restaurant NAME: ");
