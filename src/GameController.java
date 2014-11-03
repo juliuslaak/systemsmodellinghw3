@@ -321,10 +321,6 @@ public class GameController {
 	
 	private static void startDay( ) {
 		
-		for (Waiter w : player.getRestaurant().getWaiters()) {
-			w.nrOfTablesAssigned = 0;
-		}
-		
 		assignWaitersToTables();
 		
 		ArrayList<Client> clients = new ArrayList<Client>();
