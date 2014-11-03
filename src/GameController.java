@@ -146,7 +146,7 @@ public class GameController {
 					designMenu();
 					break;
 				case 3:
-					startDay(quitGame);
+					startDay();
 					break;
 				case 4:
 					System.out.println("By quitting before the end of the game you lose your game.");
@@ -283,7 +283,7 @@ public class GameController {
 		System.out.println();
 	}
 	
-	private static boolean startDay( boolean quitGame ) {
+	private static void startDay( ) {
 		
 		for (Waiter w : player.getRestaurant().getWaiters()) {
 			w.nrOfTablesAssigned = 0;
@@ -318,8 +318,6 @@ public class GameController {
 		setPersonNotClients();
 		clients = null;
 		currentDay++;
-				
-		return quitGame;
 		
 	}
 
