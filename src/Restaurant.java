@@ -90,7 +90,7 @@ public class Restaurant{
 	}
 	
 	
-public boolean checkIfBudgetEnough( double cost ){
+	public boolean checkIfBudgetEnough( double cost ){
 		if(cost > budget){
 			return false;
 		}else{

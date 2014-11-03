@@ -17,7 +17,7 @@ public class GameController {
 	
 	static BufferedReader in;
 	
-	private static Player player;
+	public static Player player;
 	
 	private static java.util.List<Person> persons;
 	

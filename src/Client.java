@@ -12,6 +12,8 @@ public class Client
 	public Client(Person p, Table t) {
 		this.person = p;
 		this.table = t;
+		
+		Order order = new Order();
 	}
 
 
