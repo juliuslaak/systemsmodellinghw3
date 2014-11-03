@@ -4,7 +4,7 @@ public class Beverage extends MenuItem
     private final static double HIGH_INGREDIENT_COST = 3;
     
 	public static double lowQualityPrice = LOW_INGREDIENT_COST;
-        public static double highQualityPrice = HIGH_INGREDIENT_COST;
+    public static double highQualityPrice = HIGH_INGREDIENT_COST;
 	private double volume;
 	
 	public Beverage( String name, double volume ) {
@@ -29,5 +29,6 @@ public class Beverage extends MenuItem
 			return highQualityPrice;
 		}
 	}
+
 		
 }
