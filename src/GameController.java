@@ -16,6 +16,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.nio.charset.Charset;
 
+import javax.swing.JOptionPane;
+
 
 
 public class GameController {
@@ -42,13 +44,10 @@ public class GameController {
 		while(running) {
 			
 			showMainMenu();
-			int input = -1;
-			try {
-				input = Integer.parseInt(in.readLine());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			System.out.println(" ");
+			
+			Integer input = getInputFromPlayer(3);
+			
+			System.out.println();
 			
 			switch (input) {
 				case 1:
@@ -71,13 +70,37 @@ public class GameController {
 			}
 			
 			if(!correctInput){
-				System.out.println("Wrong input!\n");
+				System.out.println("Wrong input!");
 				correctInput = true;
 			}
 			
-			clearScreen();
+			//clearScreen();
 		}
 
+	}
+
+	private static Integer getInputFromPlayer(Integer maxAllowed) throws IOException {
+
+		Integer operationNr = 0;
+		
+		while (true) {
+			System.out.print("\nEnter action number: ");
+			String input = in.readLine();
+			
+			try {
+				operationNr = Integer.parseInt(input);
+				if (operationNr < 1 || operationNr > maxAllowed) {
+					System.out.println("Action not defined!");
+				} else { 
+					break;
+				}
+			} catch(NumberFormatException e) {
+				System.out.println("Action must be INTEGER!");
+			}
+
+		}
+		
+		return operationNr;
 	}
 
 	private static void startGame( ) throws IOException {
@@ -113,10 +136,9 @@ public class GameController {
 		while(currentDay <= 30){
 			
 			showGameStateAndOperations();
-			int operationNr = Integer.parseInt(in.readLine());
-			
+			Integer input = getInputFromPlayer(4);
 		
-			switch (operationNr) {
+			switch (input) {
 				case 1:
 					showTrainingOptionsAndTrain();
 					break;
@@ -133,8 +155,7 @@ public class GameController {
 					if(answer.equals("y")){
 						quitGame = true;
 						System.out.println("Restaurant closes and game ends!");
-					}else if(answer.equals("n")){
-						quitGame = false;
+						break;
 					}else{
 						correctInput = false;
 					}
@@ -145,7 +166,7 @@ public class GameController {
 			}
 			
 			if(!correctInput){
-				System.out.println("Wrong input!\n");
+				System.out.println("Wrong input!");
 				correctInput = true;
 			}
 			
@@ -165,6 +186,7 @@ public class GameController {
 			System.out.println("30 days is over - good job!");
 			System.out.print("Your SCORE for the game is: ");
 			System.out.println(player.getRestaurant().getBudget());
+			updateRankings();
 		}
 	}
 	
@@ -184,10 +206,10 @@ public class GameController {
 			System.out.println("\t6.Pick number of high quality dishes");
 			System.out.println("\t7.Pick number of high quality beverages");
 			System.out.println("\t8.Back");
-			System.out.print("\tEnter action number:");
 			
-			int actionNr = Integer.parseInt(in.readLine());
-			switch (actionNr) {
+			Integer input = getInputFromPlayer(8);
+			
+			switch (input) {
 				case 1:
 					printMenu();
 					System.out.println("Press enter to continue");
@@ -430,12 +452,11 @@ public class GameController {
 		}
 		
 		System.out.println("\t"+i+". Back");
-		System.out.print("\tEnter acion number:");
 		
-		//pick correct employee
-		int operationNr = Integer.parseInt(in.readLine());
+		Integer input = getInputFromPlayer(6);
+		
 		Employee employee = null;
-		switch (operationNr) {
+		switch (input) {
 			case 1:
 				employee = chef;
 				break;
@@ -450,6 +471,8 @@ public class GameController {
 				break;
 			case 5:
 				employee = restaurant.getWaiters().get(2);
+				break;
+			case 6:
 				break;
 			default:
 				break;
@@ -474,8 +497,6 @@ public class GameController {
 		System.out.println("1. Start new game");
 		System.out.println("2. View ranking list");
 		System.out.println("3. Quit");
-		
-		System.out.print("Enter action number: ");
 	}
 
     
@@ -491,13 +512,16 @@ public class GameController {
 		else {
 		
 			BufferedReader br = new BufferedReader(new FileReader(file));
+
+			System.out.println(">>> Current RANKING LIST");
+			System.out.println(">>> Player\tScore");
 			
 			String line = null;
 			if (file.length() == 0) {
 				System.out.println(">>> Ranking list is empty! Start a new game!");
 			}
 			while ((line = br.readLine()) != null) {
-				System.out.println(line);
+				System.out.println(">>> " + line);
 			}
 		 
 			br.close();
@@ -515,7 +539,7 @@ public class GameController {
     		    System.out.println("No ranking list existed, created one.");
     		}
     		
-    		String playerStats = player.getName() + "\t" + player.getRestaurant().getBudget();
+    		String playerStats = player.getName() + "\t" + player.getRestaurant().getBudget() + "\n";
  
     		//true = append file
     		FileWriter fileWritter = new FileWriter(file.getName(),true);
@@ -548,8 +572,6 @@ public class GameController {
 		System.out.println("2. Design menu");
 		System.out.println("3. Start day / Open restaurant");
 		System.out.println("4. Quit game\n");
-	    
-		System.out.print("Enter action number: ");
 	}
 	
 	private static void clearScreen( ) {

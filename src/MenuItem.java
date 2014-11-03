@@ -20,11 +20,5 @@ public abstract class MenuItem
 		this.qualityLevel = qualityLevel;
 	}
 	
-
-	public abstract void setLowQualityPrice( double price );
-	
-	
-	public abstract void setHighQualityPrice( double price );
-	
 	
 }
