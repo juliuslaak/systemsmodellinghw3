@@ -331,8 +331,8 @@ public class GameController {
 			}
 		}
 		else {
+			System.out.println("5 tables filled with clients. Good!");
 			for (int i = 1; i<=5; i++) {
-				System.out.println("5 tables filled with clients. Good!");
 				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
 			}
 		}
