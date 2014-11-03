@@ -31,6 +31,6 @@ public class Dish extends MenuItem
 		}else{
 			return highQualityPrice;
 		}
-	}
 
+	}		
 }
