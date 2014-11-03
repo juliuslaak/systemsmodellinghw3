@@ -19,6 +19,4 @@ public abstract class MenuItem
 	public void setQualityLevel( QualityLevel qualityLevel ) {
 		this.qualityLevel = qualityLevel;
 	}
-	
-	
 }

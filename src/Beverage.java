@@ -37,5 +37,6 @@ public class Beverage extends MenuItem
 			return highQualityPrice;
 		}
 	}
+
 		
 }
