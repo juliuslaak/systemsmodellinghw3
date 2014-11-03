@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.List;
 import java.util.Collections;
 import java.nio.file.Files;
@@ -108,7 +110,7 @@ public class GameController {
 		boolean correctInput = true;
 		boolean quitGame = false;
 		
-		while(currentDay <= 30 && !quitGame){
+		while(currentDay <= 30){
 			
 			showGameStateAndOperations();
 			int operationNr = Integer.parseInt(in.readLine());
@@ -122,15 +124,15 @@ public class GameController {
 					designMenu();
 					break;
 				case 3:
-					quitGame = startDay(quitGame);
+					startDay(quitGame);
 					break;
 				case 4:
-					System.out.println("By quitting before the end of the game you lose your points.");
+					System.out.println("By quitting before the end of the game you lose your game.");
 					System.out.print("Are you sure you wish to quit game now (y/n)? ");
 					String answer = in.readLine();
 					if(answer.equals("y")){
 						quitGame = true;
-						System.out.println("Game over!");
+						System.out.println("Restaurant closes and game ends!");
 					}else if(answer.equals("n")){
 						quitGame = false;
 					}else{
@@ -140,14 +142,29 @@ public class GameController {
 				default:
 					correctInput = false;
 					break;
-			}			
+			}
 			
 			if(!correctInput){
 				System.out.println("Wrong input!\n");
 				correctInput = true;
 			}
 			
+
+			if (player.getRestaurant().budgetNegative()) {
+				quitGame = true;
+				System.out.println("Budget was found negative at the end of the day!");
+				System.out.println("Restaurant closes and game ends!");
+				break;
+			}
+			
 			clearScreen();
+		}
+		
+		// If the game was ended after 30 days (i.e. budget was not negative)
+		if (!quitGame) {
+			System.out.println("30 days is over - good job!");
+			System.out.print("Your SCORE for the game is: ");
+			System.out.println(player.getRestaurant().getBudget());
 		}
 	}
 	
@@ -255,9 +272,7 @@ public class GameController {
 		List<Client> clients = new ArrayList<Client>();
 		chooseClients(clients);
 		
-		System.out.println("clients: "+ clients.size());
-		
-		System.out.println("Day is over!");
+		System.out.println("------ End of a Day ---------");
 		
 		// Pay salaries and if budget is negative, quit game
 		if (Arrays.asList(daysOfWeekends).contains(currentDay)) {
@@ -266,13 +281,13 @@ public class GameController {
 			Restaurant restaurant = player.getRestaurant();
 			
 			Chef chef = restaurant.getChef();
-			quitGame = player.getRestaurant().payWeeklySalaries(chef.computePay());
+			player.getRestaurant().payWeeklySalaries(chef.computePay());
 			
 			Barman barman = restaurant.getBarman();
-			quitGame = player.getRestaurant().payWeeklySalaries(barman.computePay());
+			player.getRestaurant().payWeeklySalaries(barman.computePay());
 			
 			for(Waiter w : restaurant.getWaiters()){
-				quitGame = player.getRestaurant().payWeeklySalaries(w.computePay());
+			player.getRestaurant().payWeeklySalaries(w.computePay());
 			}
 		}
 		
@@ -281,7 +296,7 @@ public class GameController {
 		setPersonNotClients();
 		clients = null;
 		currentDay++;
-		
+				
 		return quitGame;
 		
 	}
@@ -457,7 +472,7 @@ public class GameController {
 		
 		System.out.println("Actions");
 		System.out.println("1. Start new game");
-		System.out.println("2. View high score");
+		System.out.println("2. View ranking list");
 		System.out.println("3. Quit");
 		
 		System.out.print("Enter action number: ");
@@ -487,6 +502,34 @@ public class GameController {
 		 
 			br.close();
 		}
+	}
+	private static void updateRankings( ) throws IOException {
+		
+		try{
+ 
+    		File dir = new File(".");
+    		File file = new File(dir.getCanonicalPath() + File.separator + "ranking.txt");
+    		
+    		if(!file.exists()) {
+    		    file.createNewFile();
+    		    System.out.println("No ranking list existed, created one.");
+    		}
+    		
+    		String playerStats = player.getName() + "\t" + player.getRestaurant().getBudget();
+ 
+    		//true = append file
+    		FileWriter fileWritter = new FileWriter(file.getName(),true);
+	        BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+	        bufferWritter.write(playerStats);
+	        bufferWritter.close();
+ 
+	        System.out.println("Ranking list updated.");
+	        
+	        showRankings();
+ 
+    	}catch(IOException e){
+    		e.printStackTrace();
+    	}
 	}
 
 	/**

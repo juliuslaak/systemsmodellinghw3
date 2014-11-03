@@ -26,13 +26,13 @@ public class Restaurant{
 	private java.util.List<MenuItem> menu;
 	
 	public Restaurant( ) throws IOException {
-		System.out.print("Enter restaurant name:");
+		System.out.print("Restaurant NAME: ");
 		name = GameController.in.readLine();
 		
-		System.out.print("Enter restaurant address:");
+		System.out.print("Restaurant ADDRESS: ");
 		address = GameController.in.readLine();
 		
-		System.out.print("Enter city:");
+		System.out.print("City: ");
 		city = GameController.in.readLine();
 		
 		System.out.println("\n");
@@ -79,23 +79,6 @@ public class Restaurant{
 		beverageMenu.add(new Beverage("Tea", 300));
 	}
 	
-	public void initMenuItemsCorrespondingPrices( )
-	{
-			
-	}
-	
-	public void rateService( )
-	{
-		
-	}
-	
-	
-	public float receivePaymentForOrder( )
-	{
-		return 0;
-	}
-	
-	
 	public boolean checkIfBudgetEnough( double cost ){
 		if(cost > budget){
 			return false;
@@ -109,9 +92,10 @@ public class Restaurant{
 		return null;
 	}
 	
-	public float paySuppliers( )
+	public void paySuppliers( )
 	{
-		return 0;
+		budget = budget - ingredientsCostWeekly;
+		ingredientsCostWeekly = 0;
 	}
 
 	public float getBudget( ) {
@@ -140,19 +124,17 @@ public class Restaurant{
 		this.budget = budget;
 	}
 
-	public boolean checkIfBudgetEnough( )
-	{
-		return false;
-	}
-
-	public boolean payWeeklySalaries( double salary ){
-		this.budget = this.budget - salary;
-		if (this.budget < 0) {
+	public boolean budgetNegative( ) {
+		if (budget < 0) {
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+
+	public void payWeeklySalaries( double salary ){
+		budget = budget - salary;
 	}
 	
 	public static List<Beverage> getBeverages( ) {

@@ -2,11 +2,11 @@ import java.io.IOException;
 
 public class Player
 {
-	public String name;
+	private String name;
 	private Restaurant restaurant;
 	
 	public Player( ) throws IOException {
-		System.out.print("\nEnter your name:");
+		System.out.print("\nPlayer NAME: ");
 		name = GameController.in.readLine();
 		
 		restaurant = new Restaurant();
