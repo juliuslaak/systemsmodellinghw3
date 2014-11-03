@@ -1,7 +1,10 @@
 public class Beverage extends MenuItem
 {
-	public static double lowQualityPrice;
-    public static double highQualityPrice;
+    private final static double LOW_INGREDIENT_COST = 1;
+    private final static double HIGH_INGREDIENT_COST = 3;
+    
+	public static double lowQualityPrice = LOW_INGREDIENT_COST;
+    public static double highQualityPrice = HIGH_INGREDIENT_COST;
 	private double volume;
 	
 	public Beverage( String name, double volume ) {
@@ -12,9 +15,9 @@ public class Beverage extends MenuItem
 	@Override
 	public double calculateIngredientCost( ) {
 		if(qualityLevel.equals(QualityLevel.HIGH)){
-			return 3;
+			return HIGH_INGREDIENT_COST;
 		}else{
-			return 1;
+			return LOW_INGREDIENT_COST;
 		}
 	}
 		
