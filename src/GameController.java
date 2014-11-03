@@ -287,7 +287,7 @@ public class GameController {
 					break;
 				case 7:
 					System.out.print("Enter number of high quality beverages(1 to 5):");
-					int nrOfHighQualityBeverages = Integer.parseInt(in.readLine());
+					Integer nrOfHighQualityBeverages = inputFromPlayer(5);
 					
 					for(int i = 0; i < beverageMenu.size(); i++){
 						if(i < nrOfHighQualityBeverages){
@@ -301,7 +301,7 @@ public class GameController {
 					finished = true;
 					break;
 				default:
-					System.out.println("Wrong input!");
+					System.out.println("Oops! Something is wrong with the inserted action!");
 					break;
 			}
 		}
