@@ -15,9 +15,9 @@ public class Restaurant{
 	
 	private Barman barman;
 	private Chef chef;
-	private java.util.List<Waiter> waiters;
-	private static List<Dish> dishMenu;
-	private static List<Beverage> beverageMenu;
+	private ArrayList<Waiter> waiters;
+	private static ArrayList<Dish> dishMenu;
+	private static ArrayList<Beverage> beverageMenu;
 	
 	java.util.List<Table> tables;
 	
@@ -97,7 +97,7 @@ public class Restaurant{
 		return barman;
 	}
 
-	public List<Waiter> getWaiters( ) {
+	public ArrayList<Waiter> getWaiters( ) {
 		return waiters;
 	}
 
@@ -122,11 +122,11 @@ public class Restaurant{
 		budget -= salary;
 	}
 	
-	public static List<Beverage> getBeverages( ) {
+	public static ArrayList<Beverage> getBeverages( ) {
 		return beverageMenu;
 	}
 	
-	public static List<Dish> getDishes( ) {
+	public static ArrayList<Dish> getDishes( ) {
 		return dishMenu;
 	}
 

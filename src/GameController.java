@@ -3,7 +3,6 @@ import java.io.BufferedWriter;
 import java.util.Random;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.List;
 import java.io.File;
 import java.util.Collections;
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class GameController {
 	
 	public static Player player;
 	
-	private static java.util.List<Person> persons;
+	private static ArrayList<Person> persons;
 	
 	private static Integer currentDay;
 	
@@ -231,8 +230,8 @@ public class GameController {
 	private static void designMenu( ) throws NumberFormatException, IOException {
 		
 		boolean finished = false;
-		List<Dish> dishMenu = player.getRestaurant().getDishes();
-		List<Beverage> beverageMenu = player.getRestaurant().getBeverages();
+		ArrayList<Dish> dishMenu = player.getRestaurant().getDishes();
+		ArrayList<Beverage> beverageMenu = player.getRestaurant().getBeverages();
 		
 		while(!finished){
 			System.out.println("\tActions");
@@ -309,11 +308,11 @@ public class GameController {
 
 	private static void printMenu( ) {
 		System.out.println("\n\tMENU");
-		List<Dish> dishMenu = player.getRestaurant().getDishes();
+		ArrayList<Dish> dishMenu = player.getRestaurant().getDishes();
 		for(MenuItem item : dishMenu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
-		List<Beverage> beverageMenu = player.getRestaurant().getBeverages();
+		ArrayList<Beverage> beverageMenu = player.getRestaurant().getBeverages();
 		for(MenuItem item : beverageMenu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
@@ -328,7 +327,7 @@ public class GameController {
 		
 		assignWaitersToTables();
 		
-		List<Client> clients = new ArrayList<Client>();
+		ArrayList<Client> clients = new ArrayList<Client>();
 		chooseClients(clients);
 		
 		System.out.println("------ End of a Day ---------");
@@ -376,7 +375,7 @@ public class GameController {
 
 	private static void initializeWaiter( ) {
 		
-		List<Waiter> waiters = player.getRestaurant().getWaiters();
+		ArrayList<Waiter> waiters = player.getRestaurant().getWaiters();
 		
 		for (Waiter w : waiters) {
 			w.nrOfTablesAssigned = 0;
@@ -389,7 +388,7 @@ public class GameController {
 		 * Randomly assigns tables for waiters who have less than 3 tables assigned
 		 */
 		
-		List<Waiter> waiters = player.getRestaurant().getWaiters();
+		ArrayList<Waiter> waiters = player.getRestaurant().getWaiters();
 		Collections.shuffle(waiters);
 		
 
@@ -404,15 +403,15 @@ public class GameController {
 		}
 	}
 
-	private static void chooseClients( List<Client> clients ) {
+	private static void chooseClients( ArrayList<Client> clients ) {
 		
 		int reputation = player.getRestaurant().reputation;
 		
-		List<Person> personsToChooseFrom = new ArrayList<Person>(persons.size());
+		ArrayList<Person> personsToChooseFrom = new ArrayList<Person>(persons.size());
 		personsToChooseFrom.addAll(persons);
 		Collections.shuffle(personsToChooseFrom);
 		
-		List<Table> tablesToChooseFrom = new ArrayList<Table>(player.getRestaurant().tables.size());
+		ArrayList<Table> tablesToChooseFrom = new ArrayList<Table>(player.getRestaurant().tables.size());
 		tablesToChooseFrom.addAll(player.getRestaurant().tables);
 				
 		if (reputation < 15) {
@@ -436,7 +435,7 @@ public class GameController {
 		
 	}
 
-	private static void generateClient( List<Client> clients, List<Person> personsToChooseFrom, List<Table> tablesToChooseFrom ) {
+	private static void generateClient( ArrayList<Client> clients, ArrayList<Person> personsToChooseFrom, ArrayList<Table> tablesToChooseFrom ) {
 		
 		// Pick random table from empty tables
 		Random randomGenerator = new Random();
