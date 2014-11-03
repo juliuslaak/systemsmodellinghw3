@@ -41,4 +41,11 @@ public abstract class Employee
 	}
 	
 	
+
+	public float payWeeklySalaries( )
+	{
+		return 0;
+	}
+	
+	
 }

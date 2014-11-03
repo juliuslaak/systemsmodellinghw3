@@ -1,5 +1,5 @@
-import java.util.Collections;
 import java.util.List;
+import java.util.Collections;
 
 public class Client
 {
@@ -9,11 +9,12 @@ public class Client
 	
 	private Table table;
 	
-	public Client(Person p, Table t) {
+	public Client( Person p, Table t ) {
 		this.person = p;
 		this.table = t;
 		
-		Order order = new Order();
+		Order o = new Order();
+		this.order = o;
 	}
 
 

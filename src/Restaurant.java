@@ -7,6 +7,8 @@ public class Restaurant{
 	public int reputation = 15;
 
 	public double budget = 10000.0;
+	private double ingredientsCostWeekly = 0;
+
 	public String name;
 	public String address;
 	public String city;
@@ -19,6 +21,9 @@ public class Restaurant{
 	
 	java.util.List<Table> tables;
 	
+	
+	
+	private java.util.List<MenuItem> menu;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Enter restaurant name:");
@@ -140,7 +145,7 @@ public class Restaurant{
 		return false;
 	}
 
-	public boolean payWeeklySalaries(double salary){
+	public boolean payWeeklySalaries( double salary ){
 		this.budget = this.budget - salary;
 		if (this.budget < 0) {
 			return true;
@@ -150,12 +155,20 @@ public class Restaurant{
 		}
 	}
 	
-	public static List<Beverage> getBeverages() {
+	public static List<Beverage> getBeverages( ) {
 		return beverageMenu;
 	}
 	
-	public static List<Dish> getDishes() {
+	public static List<Dish> getDishes( ) {
 		return dishMenu;
+	}
+
+	public double getIngredientsCostWeekly() {
+		return ingredientsCostWeekly;
+	}
+
+	public void setIngredientsCostWeekly(double ingredientsCostWeekly) {
+		this.ingredientsCostWeekly = ingredientsCostWeekly;
 	}
 	
 }

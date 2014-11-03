@@ -4,7 +4,7 @@ public class Table
 	
 	public Waiter waiter;
 	
-	public Table(int i) {
+	public Table( int i ) {
 		this.number = i;
 	}
 	

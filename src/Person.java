@@ -21,7 +21,7 @@ public class Person
 
 	private boolean currentlyClient;
 	
-	public Person (String name, String surname, String telephoneNumber, String taxCode) {
+	public Person( String name, String surname, String telephoneNumber, String taxCode ) {
 
 		this.name = name;
 		this.surname = surname;
@@ -62,11 +62,11 @@ public class Person
 		return nrOfBev;
 	}
 	
-	public boolean getcurrentlyClient() {
+	public boolean getcurrentlyClient( ) {
 		return currentlyClient;
 	}
 	
-	public void setcurrentlyClient(boolean IsClient) {
+	public void setcurrentlyClient( boolean IsClient ) {
 		this.currentlyClient = IsClient;
 	}
 	
