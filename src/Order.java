@@ -13,6 +13,7 @@ public class Order
 		int indexOfTable2 = randomGenerator2.nextInt(Restaurant.getDishes().size());
         Beverage bev = Restaurant.getBeverages().get(indexOfTable1);
         Dish dis = Restaurant.getDishes().get(indexOfTable2);
+        addToBudget();
         this.beverage = bev;
         this.dish = dis;
 	}
@@ -22,7 +23,7 @@ public class Order
 		double dishPrice = dish.getPrice();
 		double bevPrice = beverage.getPrice();
 		budget = dishPrice + bevPrice + GameController.player.getRestaurant().getBudget();
-		
+		GameController.player.getRestaurant().setBudget(budget);
 	}
 
 	public Dish chooseRandomDish( )
