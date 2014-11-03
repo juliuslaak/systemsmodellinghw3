@@ -7,15 +7,9 @@ public class Order
 	private Dish dish;
 	
 	public Order() {
-		Random randomGenerator1 = new Random();
-		Random randomGenerator2 = new Random();
-		int indexOfTable1 = randomGenerator1.nextInt(Restaurant.getBeverages().size());
-		int indexOfTable2 = randomGenerator2.nextInt(Restaurant.getDishes().size());
-        Beverage bev = Restaurant.getBeverages().get(indexOfTable1);
-        Dish dis = Restaurant.getDishes().get(indexOfTable2);
+        this.beverage = chooseRandomBev();
+        this.dish = chooseRandomDish();
         addToBudget();
-        this.beverage = bev;
-        this.dish = dis;
 	}
 	
 	private void addToBudget() {
@@ -28,13 +22,19 @@ public class Order
 
 	public Dish chooseRandomDish( )
 	{
-		return null;
+		Random randomGenerator2 = new Random();
+		int indexOfTable2 = randomGenerator2.nextInt(Restaurant.getDishes().size());
+        Dish dis = Restaurant.getDishes().get(indexOfTable2);
+        return dis;
 	}
 	
 	
 	public Beverage chooseRandomBev( )
 	{
-		return null;
+		Random randomGenerator1 = new Random();
+		int indexOfTable1 = randomGenerator1.nextInt(Restaurant.getBeverages().size());
+        Beverage bev = Restaurant.getBeverages().get(indexOfTable1);
+        return bev;
 	}
 	
 	
