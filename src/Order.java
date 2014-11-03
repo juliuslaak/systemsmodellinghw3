@@ -3,24 +3,28 @@ import java.util.Random;
 public class Order
 {
 	private Beverage beverage;
-	
 	private Dish dish;
-	
-	
 	public String orderId;
-	
-	
 	public Integer date;
-	
-	
-	private Waiter waider;
+	private Waiter waiter;
 	
 	public Order( ) {
         this.beverage = chooseRandomBev();
         this.dish = chooseRandomDish();
         addToBudget();
+        updateIngredientDept();
 	}
 	
+	private void updateIngredientDept() {
+		
+		double currentIngredients;
+		currentIngredients = dish.calculateIngredientCost() + beverage.calculateIngredientCost();
+		
+		double ingredientsCostWeekly = GameController.player.getRestaurant().getIngredientsCostWeekly();
+		GameController.player.getRestaurant().setIngredientsCostWeekly(ingredientsCostWeekly + currentIngredients);
+		
+	}
+
 	private void addToBudget( ) {
 		double budget;
 		double dishPrice = dish.getPrice();

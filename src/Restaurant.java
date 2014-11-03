@@ -7,6 +7,8 @@ public class Restaurant{
 	public int reputation = 15;
 
 	public double budget = 10000.0;
+	private double ingredientsCostWeekly = 0;
+
 	public String name;
 	public String address;
 	public String city;
@@ -159,6 +161,14 @@ public class Restaurant{
 	
 	public static List<Dish> getDishes( ) {
 		return dishMenu;
+	}
+
+	public double getIngredientsCostWeekly() {
+		return ingredientsCostWeekly;
+	}
+
+	public void setIngredientsCostWeekly(double ingredientsCostWeekly) {
+		this.ingredientsCostWeekly = ingredientsCostWeekly;
 	}
 	
 }
