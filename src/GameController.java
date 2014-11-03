@@ -3,6 +3,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.List;
 import java.io.File;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 import java.io.InputStreamReader;
@@ -21,6 +24,8 @@ public class GameController {
 	private static java.util.List<Client> clients;
 	
 	private static int currentDay;
+	
+	private static int[] daysOfWeekends = new int[] {7,14,21,28};
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -102,7 +107,6 @@ public class GameController {
 		
 		while(currentDay <= 30 && !quitGame){
 			
-			
 			showGameStateAndOperations();
 			int operationNr = Integer.parseInt(in.readLine());
 			
@@ -115,7 +119,7 @@ public class GameController {
 					designMenu();
 					break;
 				case 3:
-					startDay();
+					quitGame = startDay(quitGame);
 					break;
 				case 4:
 					System.out.println("By quitting before the end of the game you lose your points.");
@@ -232,8 +236,8 @@ public class GameController {
 		}
 		System.out.println();
 	}
-
-	private static void startDay() {
+	
+	private static boolean startDay(boolean quitGame) {
 		
 		for (Waiter w : player.getRestaurant().getWaiters()) {
 			w.nrOfTablesAssigned = 0;
@@ -247,10 +251,28 @@ public class GameController {
 		
 		System.out.println("Day is over!");
 		
+		
+		// Pay salaries and if budget is negative, quit game
+		if (Arrays.asList(daysOfWeekends).contains(currentDay)) {
+			Restaurant restaurant = player.getRestaurant();
+			
+			Chef chef = restaurant.getChef();
+			quitGame = player.getRestaurant().payWeeklySalaries(chef.computePay());
+			
+			Barman barman = restaurant.getBarman();
+			quitGame = player.getRestaurant().payWeeklySalaries(barman.computePay());
+			
+			for(Waiter w : restaurant.getWaiters()){
+				quitGame = player.getRestaurant().payWeeklySalaries(w.computePay());
+			}
+		}
+		
 		initializeWaiter();
 		initializeTables();
 		clients = null;
 		currentDay++;
+		
+		return quitGame;
 		
 	}
 
@@ -315,8 +337,8 @@ public class GameController {
 			}
 		}
 		else {
+			System.out.println("5 tables filled with clients. Good!");
 			for (int i = 1; i<=5; i++) {
-				System.out.println("5 tables filled with clients. Good!");
 				generateClient(clients, personsToChooseFrom, tablesToChooseFrom);
 			}
 		}
@@ -477,8 +499,5 @@ public class GameController {
 			System.out.println();
 		}
 	}
-	
-	
-
-	
+		
 }

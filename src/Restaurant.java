@@ -133,6 +133,21 @@ public boolean checkIfBudgetEnough( double cost ){
 	public void setBudget( double budget ) {
 		this.budget = budget;
 	}
+
+	public boolean checkIfBudgetEnough( )
+	{
+		return false;
+	}
+
+	public boolean payWeeklySalaries(double salary){
+		this.budget = this.budget - salary;
+		if (this.budget < 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	public java.util.List<MenuItem> getMenu() {
 		return menu;
