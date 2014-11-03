@@ -62,6 +62,16 @@ public class Order
 	{
 		return 0;
 	}
+
+	public Dish getDish() {
+		return dish;
+	}
+
+	public Beverage getBeverage() {
+		return beverage;
+	}
+	
+	
 	
 	
 }
