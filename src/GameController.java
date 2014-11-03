@@ -151,8 +151,8 @@ public class GameController {
 	private static void designMenu() throws NumberFormatException, IOException {
 		
 		boolean finished = false;
-		List<MenuItem> menu = player.getRestaurant().getMenu();
-		
+		List<MenuItem> dishMenu = player.getRestaurant().getDishes();
+		List<MenuItem> beverageMenu = player.getRestaurant().getBeverages();
 		
 		while(!finished){
 			System.out.println("\tActions");
@@ -197,11 +197,11 @@ public class GameController {
 					System.out.print("Enter number of high quality dishes(1 to 5):");
 					int nrOfHighQualityDishes = Integer.parseInt(in.readLine());
 					
-					for(int i = 0; i < 5; i++){
+					for(int i = 0; i < dishMenu.size(); i++){
 						if(i < nrOfHighQualityDishes){
-							menu.get(i).setQualityLevel(QualityLevel.HIGH);
+							dishMenu.get(i).setQualityLevel(QualityLevel.HIGH);
 						}else{
-							menu.get(i).setQualityLevel(QualityLevel.LOW);
+							dishMenu.get(i).setQualityLevel(QualityLevel.LOW);
 						}
 					}
 					break;
@@ -209,11 +209,11 @@ public class GameController {
 					System.out.print("Enter number of high quality beverages(1 to 5):");
 					int nrOfHighQualityBeverages = Integer.parseInt(in.readLine());
 					
-					for(int i = 5; i < menu.size(); i++){
-						if(i < nrOfHighQualityBeverages +5){
-							menu.get(i).setQualityLevel(QualityLevel.HIGH);
+					for(int i = 0; i < beverageMenu.size(); i++){
+						if(i < nrOfHighQualityBeverages){
+							beverageMenu.get(i).setQualityLevel(QualityLevel.HIGH);
 						}else{
-							menu.get(i).setQualityLevel(QualityLevel.LOW);
+							beverageMenu.get(i).setQualityLevel(QualityLevel.LOW);
 						}
 					}
 					break;
@@ -229,9 +229,13 @@ public class GameController {
 	}
 
 	private static void printMenu() {
-		List<MenuItem> menu = player.getRestaurant().getMenu();
 		System.out.println("\n\tMENU");
-		for(MenuItem item : menu){
+		List<MenuItem> dishMenu = player.getRestaurant().getDishes();
+		for(MenuItem item : dishMenu){
+			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
+		}
+		List<MenuItem> beverageMenu = player.getRestaurant().getBeverages();
+		for(MenuItem item : beverageMenu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
 		System.out.println();

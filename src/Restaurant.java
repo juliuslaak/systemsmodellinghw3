@@ -14,8 +14,8 @@ public class Restaurant{
 	private Barman barman;
 	private Chef chef;
 	private java.util.List<Waiter> waiters;
-	
-	private java.util.List<MenuItem> menu;
+	private java.util.List<MenuItem> dishMenu;
+	private java.util.List<MenuItem> beverageMenu;
 	
 	java.util.List<Table> tables;
 	
@@ -55,22 +55,23 @@ public class Restaurant{
 	}
 	
 	private void initMenu( ){
-		menu = new ArrayList<MenuItem>();
+		dishMenu = new ArrayList<MenuItem>();
+		beverageMenu = new ArrayList<MenuItem>();
 		
 		//Dishes
-		menu.add(new Dish("French fries", 500));
-		menu.add(new Dish("Chicken", 700));
-		menu.add(new Dish("Spaghetti", 400));
-		menu.add(new Dish("Hamburger", 500));
-		menu.add(new Dish("Roasted beef", 800));
+		dishMenu.add(new Dish("French fries", 500));
+		dishMenu.add(new Dish("Chicken", 700));
+		dishMenu.add(new Dish("Spaghetti", 400));
+		dishMenu.add(new Dish("Hamburger", 500));
+		dishMenu.add(new Dish("Roasted beef", 800));
 	
 
 		//Beverages
-		menu.add(new Beverage("Water", 500));
-		menu.add(new Beverage("Coffee", 300));
-		menu.add(new Beverage("Coca-Cola", 500));
-		menu.add(new Beverage("Orange juice", 700));
-		menu.add(new Beverage("Tea", 300));
+		beverageMenu.add(new Beverage("Water", 500));
+		beverageMenu.add(new Beverage("Coffee", 300));
+		beverageMenu.add(new Beverage("Coca-Cola", 500));
+		beverageMenu.add(new Beverage("Orange juice", 700));
+		beverageMenu.add(new Beverage("Tea", 300));
 	}
 	
 	public void initMenuItemsCorrespondingPrices( )
@@ -149,8 +150,12 @@ public class Restaurant{
 		}
 	}
 	
-	public java.util.List<MenuItem> getMenu() {
-		return menu;
+	public java.util.List<MenuItem> getBeverages() {
+		return beverageMenu;
 	}
-
+	
+	public java.util.List<MenuItem> getDishes() {
+		return dishMenu;
+	}
+	
 }
