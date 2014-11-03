@@ -18,7 +18,8 @@ public class Person
 	
 	private Integer nrOfBev;
 	
-
+	private double moneySpent;
+	
 	private boolean currentlyClient;
 	
 	public Person( String name, String surname, String telephoneNumber, String taxCode ) {
@@ -31,12 +32,13 @@ public class Person
 		this.volCount = 0;
 		this.nrOfDishes = 0;
 		this.nrOfBev = 0;
+		this.moneySpent = 0;
 		this.currentlyClient = false;
 	}
 	
-	public Collection pickRandomClientsForRestaurant( )
-	{
-		return null;
+	public void displayPersonStats() {
+		System.out.println(name + " " + surname + "\t" + nrOfDishes + "\t" + 
+	calCount + "\t\t" + nrOfBev + "\t\t" + volCount + "\t" + moneySpent );
 	}
 	
 	public void setCalCount( Integer calCount )
@@ -44,18 +46,15 @@ public class Person
 		this.calCount=calCount;
 	}
 	
-	
 	public Integer getCalCount( )
 	{
 		return calCount;
 	}
 	
-	
 	public void setNrOfBev( Integer nrOfBev )
 	{
 		this.nrOfBev=nrOfBev;
 	}
-	
 	
 	public Integer getNrOfBev( )
 	{
@@ -94,5 +93,12 @@ public class Person
 		return volCount;
 	}
 	
-	
+
+	public double getMoneySpent() {
+		return moneySpent;
+	}
+
+	public void setMoneySpent(double moneySpent) {
+		this.moneySpent = moneySpent;
+	}
 }

@@ -36,7 +36,12 @@ public class Client
 
 
 	public void updatePerson() {
-		
+		person.setNrOfBev(person.getNrOfBev()+1);
+		person.setNrOfDishes(person.getNrOfDishes()+1);
+		person.setCalCount(person.getCalCount()+order.getDish().getCalorieCount());
+		person.setVolCount(person.getVolCount()+order.getBeverage().getVolume());
+		person.setMoneySpent(person.getMoneySpent()+order.getBeverage().getPrice() +
+				order.getDish().getPrice());
 	}
 	
 	

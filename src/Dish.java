@@ -7,9 +7,9 @@ public class Dish extends MenuItem
     
     public static double lowQualityPrice = LOW_INGREDIENT_COST;
     public static double highQualityPrice = HIGH_INGREDIENT_COST;
-	private int calorieCount;
-	
-	public Dish( String name, int calorieCount ) {
+	private Integer calorieCount;
+
+	public Dish( String name, Integer calorieCount ) {
 		super(name);
 		this.calorieCount = calorieCount;
 		
@@ -32,5 +32,13 @@ public class Dish extends MenuItem
 			return highQualityPrice;
 		}
 	}	
+
+	public Integer getCalorieCount() {
+		return calorieCount;
+	}
+
+	public void setCalorieCount(Integer calorieCount) {
+		this.calorieCount = calorieCount;
+	}
 	
 }

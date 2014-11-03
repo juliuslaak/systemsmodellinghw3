@@ -183,13 +183,28 @@ public class GameController {
 		
 		// If the game was ended after 30 days (i.e. budget was not negative)
 		if (!quitGame) {
+			player.getRestaurant().payMonthlyCosts();
+			System.out.println("--------------------------------");
+			System.out.println("------ End of the game ---------");
+			System.out.println("--------------------------------");
 			System.out.println("30 days is over - good job!");
 			System.out.print("Your SCORE for the game is: ");
 			System.out.println(player.getRestaurant().getBudget());
-			updateRankings();
+			System.out.println("--------------------------------");
+			System.out.println("--------------------------------");
+			showClientStatistics();
 		}
 	}
 	
+	private static void showClientStatistics() {
+		System.out.println("Full name\t\tDishes\t"
+				+ "Calories\tBeverages\tVolume\tMoney spent" );
+		for (Person p : persons) {
+			p.displayPersonStats();
+		}
+		System.out.println();
+	}
+
 	private static void designMenu( ) throws NumberFormatException, IOException {
 		
 		boolean finished = false;
@@ -299,7 +314,7 @@ public class GameController {
 		// Pay salaries and if budget is negative, quit game
 		if (Arrays.asList(daysOfWeekends).contains(currentDay)) {
 			
-			System.out.println("A week is passed: paying salaries!");
+			System.out.println("A week is passed: paying salaries and costs!");
 			Restaurant restaurant = player.getRestaurant();
 			
 			Chef chef = restaurant.getChef();
@@ -311,6 +326,8 @@ public class GameController {
 			for(Waiter w : restaurant.getWaiters()){
 			player.getRestaurant().payWeeklySalaries(w.computePay());
 			}
+			
+			player.getRestaurant().paySuppliers();
 		}
 		
 		initializeWaiter();

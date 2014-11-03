@@ -5,9 +5,17 @@ public class Beverage extends MenuItem
     
 	public static double lowQualityPrice = LOW_INGREDIENT_COST;
     public static double highQualityPrice = HIGH_INGREDIENT_COST;
-	private double volume;
+	private Integer volume;
 	
-	public Beverage( String name, double volume ) {
+	public Integer getVolume() {
+		return volume;
+	}
+
+	public void setVolume(Integer volume) {
+		this.volume = volume;
+	}
+
+	public Beverage( String name, Integer volume ) {
 		super(name);
 		this.volume = volume;
 	}

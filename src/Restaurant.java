@@ -55,8 +55,8 @@ public class Restaurant{
 		
 	}
 	
-	public void payMonthlyCosts( ){
-		
+	public void payMonthlyCosts(){
+		budget -= 4000;
 	}
 	
 	private void initMenu( ){
@@ -87,11 +87,6 @@ public class Restaurant{
 		}
 	}
 	
-	public LevelOfExperience checkExperience( )
-	{
-		return null;
-	}
-	
 	public void paySuppliers( )
 	{
 		budget = budget - ingredientsCostWeekly;
@@ -100,12 +95,6 @@ public class Restaurant{
 
 	public float getBudget( ) {
 		return Math.round(budget*100)/100;
-	}
-	
-
-	public int calculateReputation( )
-	{
-		return 0;
 	}
 	
 	public Barman getBarman( ) {
@@ -134,7 +123,7 @@ public class Restaurant{
 	}
 
 	public void payWeeklySalaries( double salary ){
-		budget = budget - salary;
+		budget -= salary;
 	}
 	
 	public static List<Beverage> getBeverages( ) {
