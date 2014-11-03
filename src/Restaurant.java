@@ -14,8 +14,8 @@ public class Restaurant{
 	private Barman barman;
 	private Chef chef;
 	private java.util.List<Waiter> waiters;
-	private java.util.List<MenuItem> dishMenu;
-	private java.util.List<MenuItem> beverageMenu;
+	private static List<Dish> dishMenu;
+	private static List<Beverage> beverageMenu;
 	
 	java.util.List<Table> tables;
 	
@@ -55,8 +55,8 @@ public class Restaurant{
 	}
 	
 	private void initMenu( ){
-		dishMenu = new ArrayList<MenuItem>();
-		beverageMenu = new ArrayList<MenuItem>();
+		dishMenu = new ArrayList<Dish>();
+		beverageMenu = new ArrayList<Beverage>();
 		
 		//Dishes
 		dishMenu.add(new Dish("French fries", 500));
@@ -150,11 +150,11 @@ public class Restaurant{
 		}
 	}
 	
-	public java.util.List<MenuItem> getBeverages() {
+	public static List<Beverage> getBeverages() {
 		return beverageMenu;
 	}
 	
-	public java.util.List<MenuItem> getDishes() {
+	public static List<Dish> getDishes() {
 		return dishMenu;
 	}
 	

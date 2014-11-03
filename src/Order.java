@@ -17,7 +17,7 @@ public class Order
         this.dish = dis;
 	}
 	
-	private void addToBudget(float dishPrice, float bevPrice) {
+	private void addToBudget() {
 		double budget;
 		double dishPrice = dish.getPrice();
 		double bevPrice = beverage.getPrice();
