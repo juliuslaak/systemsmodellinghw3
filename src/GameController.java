@@ -151,8 +151,8 @@ public class GameController {
 	private static void designMenu() throws NumberFormatException, IOException {
 		
 		boolean finished = false;
-		List<MenuItem> dishMenu = player.getRestaurant().getDishes();
-		List<MenuItem> beverageMenu = player.getRestaurant().getBeverages();
+		List<Dish> dishMenu = player.getRestaurant().getDishes();
+		List<Beverage> beverageMenu = player.getRestaurant().getBeverages();
 		
 		while(!finished){
 			System.out.println("\tActions");
@@ -230,11 +230,11 @@ public class GameController {
 
 	private static void printMenu() {
 		System.out.println("\n\tMENU");
-		List<MenuItem> dishMenu = player.getRestaurant().getDishes();
+		List<Dish> dishMenu = player.getRestaurant().getDishes();
 		for(MenuItem item : dishMenu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
-		List<MenuItem> beverageMenu = player.getRestaurant().getBeverages();
+		List<Beverage> beverageMenu = player.getRestaurant().getBeverages();
 		for(MenuItem item : beverageMenu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
