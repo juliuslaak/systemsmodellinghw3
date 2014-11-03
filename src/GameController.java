@@ -255,7 +255,7 @@ public class GameController {
 		List<Client> clients = new ArrayList<Client>();
 		chooseClients(clients);
 		
-		
+		System.out.println("clients: "+ clients.size());
 		
 		System.out.println("Day is over!");
 		
@@ -278,11 +278,18 @@ public class GameController {
 		
 		initializeWaiter();
 		initializeTables();
+		setPersonNotClients();
 		clients = null;
 		currentDay++;
 		
 		return quitGame;
 		
+	}
+
+	private static void setPersonNotClients() {
+		for (Person p : persons) {
+			p.setcurrentlyClient(false);
+		}
 	}
 
 	private static void initializeTables( ) {

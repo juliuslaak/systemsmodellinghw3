@@ -13,7 +13,8 @@ public class Client
 		this.person = p;
 		this.table = t;
 		
-		Order order = new Order();
+		Order o = new Order();
+		this.order = o;
 	}
 
 
