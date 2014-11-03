@@ -91,7 +91,7 @@ public class GameController {
 	}
 	
 	
-	private static Integer inputFromPlayer(  ) throws IOException {
+	private static Integer inputFromPlayer( ) throws IOException {
 
 		Integer operationNr = 0;
 		
