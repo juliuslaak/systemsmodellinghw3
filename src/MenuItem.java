@@ -13,8 +13,8 @@ public abstract class MenuItem
 		qualityLevel = QualityLevel.LOW;
 	}
 	
-	public abstract double calculateIngredientCost( );
-	public abstract double getPrice( );
+	public abstract Integer calculateIngredientCost( );
+	public abstract Integer getPrice( );
 	
 	
 	public void setQualityLevel( QualityLevel qualityLevel ) {

@@ -6,7 +6,7 @@ public class Player
 	private Restaurant restaurant;
 	
 	public Player( ) throws IOException {
-		System.out.print("\nPlayer NAME: ");
+		System.out.print("Player NAME: ");
 		name = GameController.in.readLine();
 		
 		restaurant = new Restaurant();

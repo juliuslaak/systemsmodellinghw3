@@ -89,6 +89,31 @@ public class GameController {
 		
 		return operationNr;
 	}
+	
+	
+	private static Integer inputFromPlayer(  ) throws IOException {
+
+		Integer operationNr = 0;
+		
+		while (true) {
+			System.out.print("\nEnter action number: ");
+			String input = in.readLine();
+			
+			try {
+				operationNr = Integer.parseInt(input);
+				if (operationNr < 1 ) {
+					System.out.println("Action not defined!");
+				} else { 
+					break;
+				}
+			} catch(NumberFormatException e) {
+				System.out.println("Action must be INTEGER!");
+			}
+
+		}
+		
+		return operationNr;
+	}
 
 	private static void startGame( ) throws IOException {
 		
@@ -160,8 +185,13 @@ public class GameController {
 
 			if (player.getRestaurant().budgetNegative()) {
 				quitGame = true;
+				System.out.println();
+				System.out.println("--------------------------------");
+				System.out.println("--------------------------------");
 				System.out.println("Budget was found negative at the end of the day!");
 				System.out.println("Restaurant closes and game ends!");
+				System.out.println("--------------------------------");
+				System.out.println("--------------------------------");
 				break;
 			}
 			
@@ -185,11 +215,16 @@ public class GameController {
 	}
 	
 	private static void showClientStatistics( ) {
+		System.out.println("--------------------------------");
+		System.out.println("------ Client Statistics -------");
+		System.out.println("--------------------------------");
 		System.out.println("Full name\t\tDishes\t"
 				+ "Calories\tBeverages\tVolume\tMoney spent" );
 		for (Person p : persons) {
 			p.displayPersonStats();
 		}
+		System.out.println("--------------------------------");
+		System.out.println("--------------------------------");
 		System.out.println();
 	}
 
@@ -220,27 +255,27 @@ public class GameController {
 					break;
 				case 2:
 					System.out.print("\tEnter low quality dish price:");
-					int lowPriceDish = Integer.parseInt(in.readLine());
+					Integer lowPriceDish = inputFromPlayer();
 					Dish.lowQualityPrice = lowPriceDish;
 					break;
 				case 3:
 					System.out.print("\tEnter high quality dish price:");
-					int highPriceDish = Integer.parseInt(in.readLine());
+					Integer highPriceDish = inputFromPlayer();
 					Dish.highQualityPrice = highPriceDish;
 					break;
 				case 4:
 					System.out.print("\tEnter low quality beverage price:");
-					int lowPriceBeverage = Integer.parseInt(in.readLine());
+					Integer lowPriceBeverage = inputFromPlayer();
 					Beverage.lowQualityPrice = lowPriceBeverage;
 					break;
 				case 5:
 					System.out.print("\tEnter high quality beverage price:");
-					int highPriceBeverage = Integer.parseInt(in.readLine());
+					Integer highPriceBeverage = inputFromPlayer();
 					Beverage.highQualityPrice = highPriceBeverage;
 					break;
 				case 6:
 					System.out.print("Enter number of high quality dishes(1 to 5):");
-					int nrOfHighQualityDishes = Integer.parseInt(in.readLine());
+					Integer nrOfHighQualityDishes = inputFromPlayer(5);
 					
 					for(int i = 0; i < dishMenu.size(); i++){
 						if(i < nrOfHighQualityDishes){
@@ -269,7 +304,6 @@ public class GameController {
 					System.out.println("Wrong input!");
 					break;
 			}
-			clearScreen();
 		}
 	}
 
@@ -376,6 +410,7 @@ public class GameController {
 		
 		List<Person> personsToChooseFrom = new ArrayList<Person>(persons.size());
 		personsToChooseFrom.addAll(persons);
+		Collections.shuffle(personsToChooseFrom);
 		
 		List<Table> tablesToChooseFrom = new ArrayList<Table>(player.getRestaurant().tables.size());
 		tablesToChooseFrom.addAll(player.getRestaurant().tables);
@@ -573,7 +608,7 @@ public class GameController {
 		System.out.println("1. Train workers");
 		System.out.println("2. Design menu");
 		System.out.println("3. Start day / Open restaurant");
-		System.out.println("4. Quit game\n");
+		System.out.println("4. Quit game");
 	}
 	
 	private static void clearScreen( ) {
