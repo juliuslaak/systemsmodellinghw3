@@ -6,13 +6,22 @@ public class Order
 	
 	private Dish dish;
 	
-	public Order() {
+	
+	public String orderId;
+	
+	
+	public Integer date;
+	
+	
+	private Waiter waider;
+	
+	public Order( ) {
         this.beverage = chooseRandomBev();
         this.dish = chooseRandomDish();
         addToBudget();
 	}
 	
-	private void addToBudget() {
+	private void addToBudget( ) {
 		double budget;
 		double dishPrice = dish.getPrice();
 		double bevPrice = beverage.getPrice();
@@ -35,6 +44,19 @@ public class Order
 		int indexOfTable1 = randomGenerator1.nextInt(Restaurant.getBeverages().size());
         Beverage bev = Restaurant.getBeverages().get(indexOfTable1);
         return bev;
+	}
+	
+	
+
+	public Order makeAnOrder( )
+	{
+		return null;
+	}
+	
+	
+	public float calculateCost( )
+	{
+		return 0;
 	}
 	
 	

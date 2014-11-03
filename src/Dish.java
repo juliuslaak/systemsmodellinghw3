@@ -20,11 +20,26 @@ public class Dish extends MenuItem
 	}
 
 	@Override
-	public double getPrice() {
+	public double getPrice( ) {
 		if(qualityLevel.equals(QualityLevel.LOW)){
 			return lowQualityPrice;
 		}else{
 			return highQualityPrice;
 		}
 	}
+
+	@Override
+	public void setLowQualityPrice( double price )
+	{
+		
+	}
+	
+	
+	@Override
+	public void setHighQualityPrice( double price )
+	{
+		
+	}
+	
+	
 }

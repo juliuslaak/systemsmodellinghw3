@@ -2,14 +2,17 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.List;
-import java.io.File;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
+import java.nio.file.Files;
+import java.util.Scanner;
+import java.util.TimerTask;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.Random;
+import java.nio.file.Path;
+import java.io.File;
+import java.util.Arrays;
+import java.nio.charset.Charset;
 
 
 
@@ -25,7 +28,7 @@ public class GameController {
 	
 	private static int currentDay;
 	
-	private static int[] daysOfWeekends = new int[] {7,14,21,28};
+	private static int[] daysOfWeekends = new int[]{7,14,21,28};
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -148,7 +151,7 @@ public class GameController {
 		}
 	}
 	
-	private static void designMenu() throws NumberFormatException, IOException {
+	private static void designMenu( ) throws NumberFormatException, IOException {
 		
 		boolean finished = false;
 		List<Dish> dishMenu = player.getRestaurant().getDishes();
@@ -228,7 +231,7 @@ public class GameController {
 		}
 	}
 
-	private static void printMenu() {
+	private static void printMenu( ) {
 		System.out.println("\n\tMENU");
 		List<Dish> dishMenu = player.getRestaurant().getDishes();
 		for(MenuItem item : dishMenu){
@@ -241,7 +244,7 @@ public class GameController {
 		System.out.println();
 	}
 	
-	private static boolean startDay(boolean quitGame) {
+	private static boolean startDay( boolean quitGame ) {
 		
 		for (Waiter w : player.getRestaurant().getWaiters()) {
 			w.nrOfTablesAssigned = 0;
@@ -280,7 +283,7 @@ public class GameController {
 		
 	}
 
-	private static void initializeTables() {
+	private static void initializeTables( ) {
 		
 		for (Table t : player.getRestaurant().tables) {
 			t.waiter = null;
@@ -288,7 +291,7 @@ public class GameController {
 		
 	}
 
-	private static void initializeWaiter() {
+	private static void initializeWaiter( ) {
 		
 		List<Waiter> waiters = player.getRestaurant().getWaiters();
 		
@@ -298,7 +301,7 @@ public class GameController {
 		
 	}
 
-	private static void assignWaitersToTables() {
+	private static void assignWaitersToTables( ) {
 		/**
 		 * Randomly assigns tables for waiters who have less than 3 tables assigned
 		 */
@@ -318,7 +321,7 @@ public class GameController {
 		}
 	}
 
-	private static void chooseClients(List<Client> clients) {
+	private static void chooseClients( List<Client> clients ) {
 		
 		int reputation = player.getRestaurant().reputation;
 		
@@ -349,8 +352,7 @@ public class GameController {
 		
 	}
 
-	private static void generateClient(List<Client> clients, 
-			List<Person> personsToChooseFrom, List<Table> tablesToChooseFrom) {
+	private static void generateClient( List<Client> clients, List<Person> personsToChooseFrom, List<Table> tablesToChooseFrom ) {
 		
 		// Pick random table from empty tables
 		Random randomGenerator = new Random();

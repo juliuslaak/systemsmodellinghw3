@@ -13,11 +13,18 @@ public abstract class MenuItem
 	}
 	
 	public abstract double calculateIngredientCost( );
-	public abstract double getPrice();
+	public abstract double getPrice( );
 	
 	
 	public void setQualityLevel( QualityLevel qualityLevel ) {
 		this.qualityLevel = qualityLevel;
 	}
+	
+
+	public abstract void setLowQualityPrice( double price );
+	
+	
+	public abstract void setHighQualityPrice( double price );
+	
 	
 }
