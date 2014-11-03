@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.Collections;
+
 import java.util.Random;
 
 public class Client
@@ -23,19 +22,19 @@ public class Client
 		updatePerson();
 	}
 
-	private Integer dishCostAndPriceDifference() {
+	private Integer dishCostAndPriceDifference( ) {
 		double costDifference = order.getDish().getPrice() - order.getDish().calculateIngredientCost();
 		Integer difference = (int) Math.floor(costDifference/3);		
 		return difference;
 	}
-	private Integer bevCostAndPriceDifference() {
+	private Integer bevCostAndPriceDifference( ) {
 		double costDifference = order.getBeverage().getPrice() - order.getBeverage().calculateIngredientCost();
 		Integer difference = (int) Math.floor(costDifference/3);		
 		return difference;
 	}
 
 
-	public void updatePerson() {
+	public void updatePerson( ) {
 		person.setNrOfBev(person.getNrOfBev()+1);
 		person.setNrOfDishes(person.getNrOfDishes()+1);
 		person.setCalCount(person.getCalCount()+order.getDish().getCalorieCount());
@@ -149,7 +148,5 @@ public class Client
 		} else {
 			GameController.player.getRestaurant().reputation -= 1;
 		}
-	}
-	
-	
+	}	
 }

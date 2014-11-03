@@ -1,9 +1,8 @@
-import com.sun.xml.internal.org.jvnet.fastinfoset.stax.LowLevelFastInfosetStreamWriter;
 
 public class Dish extends MenuItem
 {
-    private final static double LOW_INGREDIENT_COST = 3;
-    private final static double HIGH_INGREDIENT_COST = 10;
+    private static final double LOW_INGREDIENT_COST = 3;
+    private static final double HIGH_INGREDIENT_COST = 10;
     
     public static double lowQualityPrice = LOW_INGREDIENT_COST;
     public static double highQualityPrice = HIGH_INGREDIENT_COST;
@@ -33,11 +32,11 @@ public class Dish extends MenuItem
 		}
 	}	
 
-	public Integer getCalorieCount() {
+	public Integer getCalorieCount( ) {
 		return calorieCount;
 	}
 
-	public void setCalorieCount(Integer calorieCount) {
+	public void setCalorieCount( Integer calorieCount ) {
 		this.calorieCount = calorieCount;
 	}
 	

@@ -33,19 +33,6 @@ public abstract class Employee
 
 	public LevelOfExperience getExperience( ) {
 		return experience;
-	}
-	
-	public int increaseWage( )
-	{
-		return 0;
-	}
-	
-	
-
-	public float payWeeklySalaries( )
-	{
-		return 0;
-	}
-	
+	}	
 	
 }

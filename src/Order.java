@@ -6,7 +6,6 @@ public class Order
 	private Dish dish;
 	public String orderId;
 	public Integer date;
-	private Waiter waiter;
 	
 	public Order( ) {
         this.beverage = chooseRandomBev();
@@ -15,7 +14,7 @@ public class Order
         updateIngredientDept();
 	}
 	
-	private void updateIngredientDept() {
+	private void updateIngredientDept( ) {
 		
 		double currentIngredients;
 		currentIngredients = dish.calculateIngredientCost() + beverage.calculateIngredientCost();
@@ -50,24 +49,12 @@ public class Order
         return bev;
 	}
 	
-	
 
-	public Order makeAnOrder( )
-	{
-		return null;
-	}
-	
-	
-	public float calculateCost( )
-	{
-		return 0;
-	}
-
-	public Dish getDish() {
+	public Dish getDish( ) {
 		return dish;
 	}
 
-	public Beverage getBeverage() {
+	public Beverage getBeverage( ) {
 		return beverage;
 	}
 	

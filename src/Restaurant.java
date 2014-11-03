@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class Restaurant{
 	
-	public int reputation = 15;
+	public Integer reputation = 15;
 
 	public double budget = 10000.0;
 	private double ingredientsCostWeekly = 0;
@@ -20,10 +20,6 @@ public class Restaurant{
 	private static List<Beverage> beverageMenu;
 	
 	java.util.List<Table> tables;
-	
-	
-	
-	private java.util.List<MenuItem> menu;
 	
 	public Restaurant( ) throws IOException {
 		System.out.print("Restaurant NAME: ");
@@ -55,7 +51,7 @@ public class Restaurant{
 		
 	}
 	
-	public void payMonthlyCosts(){
+	public void payMonthlyCosts( ){
 		budget -= 4000;
 	}
 	
@@ -134,12 +130,12 @@ public class Restaurant{
 		return dishMenu;
 	}
 
-	public double getIngredientsCostWeekly() {
+	public double getIngredientsCostWeekly( ) {
 		return ingredientsCostWeekly;
 	}
 
-	public void setIngredientsCostWeekly(double ingredientsCostWeekly) {
+	public void setIngredientsCostWeekly( double ingredientsCostWeekly ) {
 		this.ingredientsCostWeekly = ingredientsCostWeekly;
 	}
-	
+		
 }

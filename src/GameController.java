@@ -1,18 +1,15 @@
 import java.util.ArrayList;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.List;
-import java.util.Collections;
-import java.io.InputStreamReader;
-import java.io.IOException;
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
 import java.io.File;
+import java.util.Collections;
 import java.util.Arrays;
-
-import javax.swing.JOptionPane;
-
+import java.io.InputStreamReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class GameController {
@@ -22,8 +19,6 @@ public class GameController {
 	public static Player player;
 	
 	private static java.util.List<Person> persons;
-	
-	private static java.util.List<Client> clients;
 	
 	private static Integer currentDay;
 	
@@ -40,7 +35,7 @@ public class GameController {
 			
 			showMainMenu();
 			
-			Integer input = getInputFromPlayer(3);
+			Integer input = inputFromPlayer(3);
 			
 			System.out.println();
 			
@@ -68,13 +63,10 @@ public class GameController {
 				System.out.println("Wrong input!");
 				correctInput = true;
 			}
-			
-			//clearScreen();
 		}
-
 	}
 
-	private static Integer getInputFromPlayer(Integer maxAllowed) throws IOException {
+	private static Integer inputFromPlayer( Integer maxAllowed ) throws IOException {
 
 		Integer operationNr = 0;
 		
@@ -131,7 +123,7 @@ public class GameController {
 		while(currentDay <= 30){
 			
 			showGameStateAndOperations();
-			Integer input = getInputFromPlayer(4);
+			Integer input = inputFromPlayer(4);
 		
 			switch (input) {
 				case 1:
@@ -179,6 +171,7 @@ public class GameController {
 		// If the game was ended after 30 days (i.e. budget was not negative)
 		if (!quitGame) {
 			player.getRestaurant().payMonthlyCosts();
+			updateRankings();
 			System.out.println("--------------------------------");
 			System.out.println("------ End of the game ---------");
 			System.out.println("--------------------------------");
@@ -191,7 +184,7 @@ public class GameController {
 		}
 	}
 	
-	private static void showClientStatistics() {
+	private static void showClientStatistics( ) {
 		System.out.println("Full name\t\tDishes\t"
 				+ "Calories\tBeverages\tVolume\tMoney spent" );
 		for (Person p : persons) {
@@ -217,7 +210,7 @@ public class GameController {
 			System.out.println("\t7.Pick number of high quality beverages");
 			System.out.println("\t8.Back");
 			
-			Integer input = getInputFromPlayer(8);
+			Integer input = inputFromPlayer(8);
 			
 			switch (input) {
 				case 1:
@@ -327,13 +320,13 @@ public class GameController {
 		
 		initializeWaiter();
 		initializeTables();
-		setPersonNotClients();
+		clientsLeaveRestaurant();
 		clients = null;
 		currentDay++;
 		
 	}
 
-	private static void setPersonNotClients() {
+	private static void clientsLeaveRestaurant( ) {
 		for (Person p : persons) {
 			p.setcurrentlyClient(false);
 		}
@@ -463,7 +456,7 @@ public class GameController {
 		
 		System.out.println("\t"+i+". Back");
 		
-		Integer input = getInputFromPlayer(6);
+		Integer input = inputFromPlayer(6);
 		
 		Employee employee = null;
 		switch (input) {
@@ -559,7 +552,6 @@ public class GameController {
  
 	        System.out.println("Ranking list updated.");
 	        
-	        showRankings();
  
     	}catch(IOException e){
     		e.printStackTrace();
@@ -589,5 +581,5 @@ public class GameController {
 			System.out.println();
 		}
 	}
-		
+	
 }

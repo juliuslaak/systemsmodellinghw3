@@ -1,4 +1,3 @@
-import java.util.Collection;
 
 public class Person
 {
@@ -36,7 +35,7 @@ public class Person
 		this.currentlyClient = false;
 	}
 	
-	public void displayPersonStats() {
+	public void displayPersonStats( ) {
 		System.out.println(name + " " + surname + "\t" + nrOfDishes + "\t" + 
 	calCount + "\t\t" + nrOfBev + "\t\t" + volCount + "\t" + moneySpent );
 	}
@@ -94,11 +93,13 @@ public class Person
 	}
 	
 
-	public double getMoneySpent() {
+	public double getMoneySpent( ) {
 		return moneySpent;
 	}
 
-	public void setMoneySpent(double moneySpent) {
+	public void setMoneySpent( double moneySpent ) {
 		this.moneySpent = moneySpent;
 	}
+	
+	
 }

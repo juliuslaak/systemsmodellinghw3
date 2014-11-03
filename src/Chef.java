@@ -1,6 +1,7 @@
 public class Chef extends Employee
 {
 	public final int COURSE_COST = 1200;
+	@SuppressWarnings("unused")
 	private int taxCode;
 
 	public Chef( String name, String surname, int taxCode ) {
