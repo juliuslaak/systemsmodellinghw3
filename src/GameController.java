@@ -26,9 +26,9 @@ public class GameController {
 	
 	private static java.util.List<Client> clients;
 	
-	private static int currentDay;
+	private static Integer currentDay;
 	
-	private static int[] daysOfWeekends = new int[]{7,14,21,28};
+	private static Integer[] daysOfWeekends = {7,14,21,28};
 	
 	public static void main( String[] args ) throws IOException {
 		
@@ -253,14 +253,16 @@ public class GameController {
 		assignWaitersToTables();
 		
 		List<Client> clients = new ArrayList<Client>();
-		
 		chooseClients(clients);
+		
+		
 		
 		System.out.println("Day is over!");
 		
-		
 		// Pay salaries and if budget is negative, quit game
 		if (Arrays.asList(daysOfWeekends).contains(currentDay)) {
+			
+			System.out.println("A week is passed: paying salaries!");
 			Restaurant restaurant = player.getRestaurant();
 			
 			Chef chef = restaurant.getChef();
