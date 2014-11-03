@@ -2,18 +2,10 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.List;
-import java.nio.file.Path;
 import java.io.File;
-import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
-import java.util.TimerTask;
-import java.util.Scanner;
-import java.util.TimerTask;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.io.IOException;
 
 
@@ -119,13 +111,13 @@ public class GameController {
 				case 1:
 					showTrainingOptionsAndTrain();
 					break;
-				case 3:
+				case 2:
 					designMenu();
 					break;
-				case 4:
+				case 3:
 					startDay();
 					break;
-				case 5:
+				case 4:
 					System.out.println("By quitting before the end of the game you lose your points.");
 					System.out.print("Are you sure you wish to quit game now (y/n)? ");
 					String answer = in.readLine();
@@ -165,15 +157,17 @@ public class GameController {
 			System.out.println("\t3.Pick high quality price for dishes");
 			System.out.println("\t4.Pick low quality price for beverages");
 			System.out.println("\t5.Pick high quality price for beverages");
-			System.out.println("\t6.Pick number of high quality dishes.");
+			System.out.println("\t6.Pick number of high quality dishes");
 			System.out.println("\t7.Pick number of high quality beverages");
 			System.out.println("\t8.Back");
-			System.out.print("\tEnter acion number:");
+			System.out.print("\tEnter action number:");
 			
 			int actionNr = Integer.parseInt(in.readLine());
 			switch (actionNr) {
 				case 1:
 					printMenu();
+					System.out.println("Press enter to continue");
+					in.readLine();
 					break;
 				case 2:
 					System.out.print("\tEnter low quality dish price:");
@@ -199,34 +193,44 @@ public class GameController {
 					System.out.print("Enter number of high quality dishes(1 to 5):");
 					int nrOfHighQualityDishes = Integer.parseInt(in.readLine());
 					
-			
 					for(int i = 0; i < 5; i++){
 						if(i < nrOfHighQualityDishes){
 							menu.get(i).setQualityLevel(QualityLevel.HIGH);
+						}else{
+							menu.get(i).setQualityLevel(QualityLevel.LOW);
 						}
 					}
-					
 					break;
 				case 7:
+					System.out.print("Enter number of high quality beverages(1 to 5):");
+					int nrOfHighQualityBeverages = Integer.parseInt(in.readLine());
+					
+					for(int i = 5; i < menu.size(); i++){
+						if(i < nrOfHighQualityBeverages +5){
+							menu.get(i).setQualityLevel(QualityLevel.HIGH);
+						}else{
+							menu.get(i).setQualityLevel(QualityLevel.LOW);
+						}
+					}
 					break;
 				case 8:
 					finished = true;
 					break;
-
-			default:
-				break;
+				default:
+					System.out.println("Wrong input!");
+					break;
 			}
+			clearScreen();
 		}
-		
-		
-		printMenu();
 	}
 
 	private static void printMenu() {
 		List<MenuItem> menu = player.getRestaurant().getMenu();
+		System.out.println("\n\tMENU");
 		for(MenuItem item : menu){
 			System.out.println("\t" + item.name + "\t\t\tPrice: " + item.getPrice() + "\tQuality: " + item.qualityLevel);
 		}
+		System.out.println();
 	}
 
 	private static void startDay() {
@@ -461,9 +465,9 @@ public class GameController {
 		System.out.println(" ");
 		System.out.println("Actions");
 		System.out.println("1. Train workers");
-		System.out.println("3. Design menu");
-		System.out.println("4. Start day / Open restaurant");
-		System.out.println("5. Quit game\n");
+		System.out.println("2. Design menu");
+		System.out.println("3. Start day / Open restaurant");
+		System.out.println("4. Quit game\n");
 	    
 		System.out.print("Enter action number: ");
 	}
