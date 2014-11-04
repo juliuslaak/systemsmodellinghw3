@@ -176,6 +176,11 @@ public class GameController {
 					break;
 			}
 			
+			if (quitGame) {
+				System.out.println("Bye bye!");
+				break;
+			}
+			
 			if(!correctInput){
 				System.out.println("Wrong input!");
 				correctInput = true;
